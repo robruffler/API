@@ -18,7 +18,7 @@ The **types** parameter is always required. One of **people** or **series** is r
 
 ##Query Parameters  
 
--   **types (required)** - (video|episode|playlist|blog|photoAlbum|game|event|poll|external) comma delimited list of content types
+-   **types (required)** - (video|episode|playlist|photoAlbum|game|event|poll|external) comma delimited list of content types
 -   **people** - comma delimited list of person url keys  
 -   **series** - comma delimited list of series url keys
 -   **rows** - number of rows to return per page, default is 50, max is 200
@@ -103,7 +103,7 @@ GET /content-collection?types=video&series=hs-spongebob
             "seriesTitle": "SpongeBob SquarePants",            
             "people": [
             ],
-            "duration": "0:46",
+            "duration": "0:46"
         },
         {
             "id": "e872b83c-fb40-11e0-aca6-0026b9414f30",
@@ -129,7 +129,7 @@ GET /content-collection?types=video&series=hs-spongebob
             "seriesTitle": "SpongeBob SquarePants",            
             "people": [
             ],
-            "duration": "0:56",
+            "duration": "0:56"
         },
         {
             "id": "55f3e584-b87f-11e0-8fe5-0026b9414f30",
@@ -155,7 +155,7 @@ GET /content-collection?types=video&series=hs-spongebob
             "seriesTitle": "SpongeBob SquarePants",            
             "people": [
             ],
-            "duration": "1:45",
+            "duration": "1:45"
         }        
     ]
 }
@@ -222,6 +222,104 @@ GET /content-collection-delta?types=video&series=hs-spongebob&fromDate=datetime
             "status": "deleted"
         }
 }
+
+--
+Blog Collection   
+
+One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
+
+##Query Parameters  
+
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+  
+##Response
+
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **description** - description of this item
+    -   **images** - list of images for this item
+        -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+    -   **datePosted** - date that this item was posted
+    -   **seriesUrlKey** - url key for the series this item is related to
+    -   **seriesTitle** - title of the series this item is related to
+    -   **people** - list or url keys for the people associated to this item
+    -   **duration** - duration of this item (for video only)
+    -   **url** - external url for this item (for external only)
+    -   **photoCount** - number of photos in this album (for photoAlbum only)
+--
+
+GET /blog-collection?people=victoria-justice
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "status": 0,
+        "count": 1,
+        "totalCount": 1
+    },
+    "results": [
+        {
+            "id": "c3a4c77e-2a0d-41ce-a9c4-c33831b99f5a",
+            "urlKey": "leon-thomas-spills-secret-on-victoria-justice",
+            "type": "blog",
+            "title": "Leon Thomas Spills A Secret About Victoria Justice",
+            "shortTitle": "Leon's Spilling Cast Secrets!", 
+            "description": "",
+            "images": [
+                {
+                    "type": "thumbnail",
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/blogs/blogs-1/leon-thomas-spills-secret-on-victoria-justice-thumbnail-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",   
+                            "height": "576"                             
+                        },
+                        {
+                            "path": "/nick/shows/images/blogs/blogs-1/leon-thomas-spills-secret-on-victoria-justice-thumbnail-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "1024",   
+                            "height": "1024"                             
+                        },
+                        {
+                            "path": "/nick/shows/images/blogs/blogs-1/leon-thomas-spills-secret-on-victoria-justice-thumbnail-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",   
+                            "height": "768"                             
+                        }                                
+                    ]
+                }
+            ],
+            "datePosted": "2012-09-24T22:50:00.000+0000",
+            "seriesUrlKey": "victorious",
+            "seriesTitle": "Victorious",            
+            "people": [
+                "victoria-justice",
+                "leon-thomas"
+            ]
+        }
+    ]
+}
+
 
 --
 Editorial Content Collection  
