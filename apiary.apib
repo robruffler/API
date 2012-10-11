@@ -1,0 +1,2087 @@
+HOST: http://arc.nick-q.mtvi.com/api
+
+--- Nick App API v1 ---
+---
+##All feeds require the apiKey query parameter, contact Robert.Ruffler@viacom.com to request a key for your application.
+
+All feeds should be requested with query params to identify device, os version and app version. Details TBD.
+
+Any feed / field marked as WIP subject to change.
+---
+
+--
+Content Collection   
+
+(e.g. Followed Content, Timeline Content, All Miranda Videos, SpongeBob)
+
+The **types** parameter is always required. One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
+
+##Query Parameters  
+
+-   **types (required)** - (video|episode|playlist|blog|photoAlbum|game|event|poll|external) comma delimited list of content types
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+  
+##Response
+
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **description** - description of this item
+    -   **images** - list of images for this item
+        -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+    -   **datePosted** - date that this item was posted
+    -   **seriesUrlKey** - url key for the series this item is related to
+    -   **seriesTitle** - title of the series this item is related to
+    -   **people** - list or url keys for the people associated to this item
+    -   **duration** - duration of this item (for video only)
+    -   **url** - external url for this item (for external only)
+    -   **photoCount** - number of photos in this album (for photoAlbum only)
+--
+
+GET /content-collection?types=video&series=hs-spongebob
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "status": 0,
+        "count": 3,
+        "totalCount": 3
+    },
+    "results": [
+        {
+            "id": "ddec2d94-fb40-11e0-aca6-0026b9414f30",
+            "urlKey": "spongebob-164-barnacle-face-the-zit-doesnt-quit-clip",
+            "type": "video",
+            "title": "SpongeBob SquarePants: \"Barnacle Face: The Zit That Doesn't Quit\"",
+            "shortTitle": "Barnacle Face: The Zit That Doesn't Quit", 
+            "description": "SpongeBob uses a variety of industrial-strength tools to remove a barnacle blemish from Pearl's face.",
+            "images": [
+                {
+                    "type": "thumbnail",
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "640",   
+                            "height": "360"                             
+                        },
+                        {
+                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
+                            "aspectRatio": "4x3",
+                            "width": "480",   
+                            "height": "360"                             
+                        },
+                        {
+                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
+                            "aspectRatio": "1x1",
+                            "width": "360",   
+                            "height": "360"                             
+                        }                                
+                    ]
+                }
+            ],
+            "datePosted": "",
+            "seriesUrlKey": "hs-spongebob",
+            "seriesTitle": "SpongeBob SquarePants",            
+            "people": [
+            ],
+            "duration": "0:46",
+        },
+        {
+            "id": "e872b83c-fb40-11e0-aca6-0026b9414f30",
+            "urlKey": "spongebob-162-ghoul-fools-so-not-scary-haunted-house-clip",
+            "type": "video",
+            "title": "SpongeBob SquarePants: \"Ghoul Fools: So Not Scary Haunted House\"",
+            "shortTitle": "Ghoul Fools: So Not Scary Haunted House",
+            "description": "Patrick is not impressed by the scariest haunted house under the sea.",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "640",   
+                            "height": "360"                             
+                        }                                
+                    ]
+                }
+            ],
+            "datePosted": "",
+            "seriesUrlKey": "hs-spongebob",
+            "seriesTitle": "SpongeBob SquarePants",            
+            "people": [
+            ],
+            "duration": "0:56",
+        },
+        {
+            "id": "55f3e584-b87f-11e0-8fe5-0026b9414f30",
+            "urlKey": "spongebob-accidents-will-happen-clip-2",
+            "type": "video",
+            "title": "SpongeBob SquarePants: \"Accidents Will Happen: Scamming Squid\"",
+            "shortTitle", "Accidents Will Happen: Scamming Squid",
+            "description": "Mr. Krabs will do ANYTHING to keep Squidward from getting him in trouble.",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "640",   
+                            "height": "360"                             
+                        }                                
+                    ]
+                }
+            ],
+            "datePosted": "",
+            "seriesUrlKey": "hs-spongebob",
+            "seriesTitle": "SpongeBob SquarePants",            
+            "people": [
+            ],
+            "duration": "1:45",
+        }        
+    ]
+}
+
+--
+Content Collection Delta (WIP)
+
+The **types** parameter is always required. One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
+
+##Query Parameters  
+
+-   **types (required)** - (video|episode|playlist|blog|photoAlbum|game|external) comma delimited list of content types
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **fromDate (required)** - date and time to base delta from
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+  
+##Response
+
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query - format same as content collection for added/updated records, deleted format documented here
+
+    - **id** - unique identifier for this item
+    - **type** - content type for this item (e.g. video)
+    - **status** - status of this record (deleted)
+--
+
+GET /content-collection-delta?types=video&series=hs-spongebob&fromDate=datetime
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "status": 0,
+        "count": 3,
+        "totalCount": 3
+    },
+    "results": [
+        {
+            "id": "ddec2d94-fb40-11e0-aca6-0026b9414f30",
+            "urlKey": "spongebob-164-barnacle-face-the-zit-doesnt-quit-clip",
+            "type": "video",
+            "title": "SpongeBob SquarePants: \"Barnacle Face: The Zit That Doesn't Quit\"",
+            "shortTitle": "Barnacle Face: The Zit That Doesn't Quit", 
+            "description": "SpongeBob uses a variety of industrial-strength tools to remove a barnacle blemish from Pearl's face.",
+            "images": [
+                "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg"
+            ],
+            "datePosted": "",
+            "seriesUrlKey": "hs-spongebob",
+            "seriesTitle": "SpongeBob SquarePants",            
+            "people": [
+            ],
+            "duration": "0:46",
+        },
+        {
+            "id": "e872b83c-fb40-11e0-aca6-0026b9414f30",
+            "contentType": "video",
+            "status": "deleted"
+        }
+}
+
+--
+Editorial Content Collection  
+
+##Query Parameters
+
+-   **urlKey** - unique key identifying section of content
+
+##Response
+  
+- **zones** - list of promotable areas mapped by urlKey
+    - **urlKey** - unique identifier that maps to section of app containing promoted content
+    -  **promos** - promoted content items
+        - **title** - promotional title
+        -    **description** - promotional description
+        -    **shortDescription** - promotional short description
+        -    **copy** - promotional copy
+        -    **headerText** - promotional header text
+        -    **subHeaderText** - promotional subheader text
+        -    **url** - external url for this promo, used for webviews
+        -    **images** - promotional images
+            -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+            -   **assets** - list of assets for this image in varying aspect ratios
+                -   **path** - path to this image
+                -   **aspectRatio** - aspect ratio of this image
+                -   **width** - width of this image in pixels
+                -   **height** - height of this image in pixels
+        -    **items** - promoted items
+            - **id** - unique identifier for this item
+            -   **urlKey** - unique within content type, used to request detailed info for this item
+            -   **type** - content type for this item (e.g. video)
+            -   **title** - title of this item
+            -   **shortTitle** - short title of this item
+            -   **description** - description of this item
+            -   **images** - list of images for this item
+                -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+                -   **assets** - list of assets for this image in varying aspect ratios
+            -   **datePosted** - date that this item was posted
+            -   **seriesUrlKey** - url key for the series this item is related to
+            -   **seriesTitle** - title of the series this item is related to
+            -   **people** - list or url keys for the people associated to this item
+            -   **duration** - duration of this item (for video only)
+            -   **url** - external url for this item (for external only)
+            -   **photoCount** - number of photos in this album (for photoAlbum only)
+--
+
+GET /editorial-content-collection?urlKey=win8-home-page
+< 200
+< Content-Type: application/json
+{
+    "zones": [
+        {
+            "urlKey" : "win8-home-zone",
+            "title": "Win8 Home Zone",
+            "promos" : [
+                {
+                    "title" : "Promo 1 Title",
+                    "description" : "Promo 1 Description",
+                    "shortDescription": "Promo 1 Short Description",
+                    "copy": "Promo 1 Copy",
+                    "headerText": "Promo 1 Header Text",
+                    "subHeaderText": "Promo 1 Subheader Text"                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ],
+                    "items" : [
+                        {
+                            "id": "dcc6922e-cc35-492a-9263-407cc7ffab55",
+                            "urlKey": "icarly-409-itoe-fat-cakes-bath-disaster-clip",
+                            "type": "video",
+                            "title": "iCarly: \"iToe Fat Cakes: Bath Disaster!\"",
+                            "shortTitle": "iToe Fat Cakes: Bath Disaster!",
+                            "description": "Carly sets the record for worst date in history when she gets her toe stuck in the bath faucet!",
+                            "images": [
+                                {
+                                    "type": "thumbnail",
+                                    "assets": [
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                            "aspectRatio": "16x9",
+                                            "width": "640",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
+                                            "aspectRatio": "4x3",
+                                            "width": "480",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
+                                            "aspectRatio": "1x1",
+                                            "width": "360",   
+                                            "height": "360"                             
+                                        }                                
+                                    ]
+                                }
+                            ],
+                            "datePosted": "2012-08-01T04:00:00.000+0000",
+                            "seriesUrlKey": "hs-icarly",
+                            "seriesTitle": "iCarly",            
+                            "people": [
+                                "miranda-cosgrove"
+                            ],
+                            "duration": "1:24",
+                            "videoType": "clip",
+                            "legacyId": "1073793"                            
+                        }                        
+                    ]
+                },
+                {
+                    "title": "Win8 Test Webtile Promo",
+                    "description": "Check out Teennick.com!",
+                    "shortDescription": "Check out Teennick.com!",
+                    "copy": "Check out Teennick.com!",
+                    "headerText": "Check out this Quiz!",
+                    "subHeaderText": "Promo 2 Subheader Text",                    
+                    "url": "http://www.teennick.com/quizzes/who-is-your-degrassi-girl-crush-quiz.html",                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ]
+                }                
+            ]
+        },
+        {
+            "urlKey" : "win8-live-tile-wide-zone",
+            "title": "Win8 Wide Live Tiles",
+            "promos" : [
+                {
+                    "title" : "Promo 1 Title",
+                    "description" : "Promo 1 Description",
+                    "shortDescription": "Promo 1 Short Description",
+                    "copy": "Promo 1 Copy",
+                    "headerText": "Promo 1 Header Text",
+                    "subHeaderText": "Promo 1 Subheader Text"                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ],
+                    "items" : [
+                        {
+                            "id": "dcc6922e-cc35-492a-9263-407cc7ffab55",
+                            "urlKey": "icarly-409-itoe-fat-cakes-bath-disaster-clip",
+                            "type": "video",
+                            "title": "iCarly: \"iToe Fat Cakes: Bath Disaster!\"",
+                            "shortTitle": "iToe Fat Cakes: Bath Disaster!",
+                            "description": "Carly sets the record for worst date in history when she gets her toe stuck in the bath faucet!",
+                            "images": [
+                                {
+                                    "type": "thumbnail",
+                                    "assets": [
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                            "aspectRatio": "16x9",
+                                            "width": "640",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
+                                            "aspectRatio": "4x3",
+                                            "width": "480",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
+                                            "aspectRatio": "1x1",
+                                            "width": "360",   
+                                            "height": "360"                             
+                                        }                                
+                                    ]
+                                }
+                            ],
+                            "datePosted": "2012-08-01T04:00:00.000+0000",
+                            "seriesUrlKey": "hs-icarly",
+                            "seriesTitle": "iCarly",            
+                            "people": [
+                                "miranda-cosgrove"
+                            ],
+                            "duration": "1:24",
+                            "videoType": "clip",
+                            "legacyId": "1073793",                            
+                        }                        
+                    ]
+                },
+                {
+                    "title": "Win8 Test Webtile Promo",
+                    "description": "Check out Teennick.com!",
+                    "shortDescription": "Check out Teennick.com!",
+                    "copy": "Check out Teennick.com!",
+                    "headerText": "Check out this Quiz!",
+                    "subHeaderText": "Promo 2 Subheader Text",                    
+                    "url": "http://www.teennick.com/quizzes/who-is-your-degrassi-girl-crush-quiz.html",                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ]
+                }                
+            ]
+        }
+    ]
+}
+
+--
+Content Delta (WIP)
+
+##Query Parameters  
+
+-   **urlKeys (required)** - comma delimited list of urlKeys
+-   **type (required)** - (video|episode|playlist|blog|photoAlbum|game|external|article) content type to query
+
+##Response
+  
+- **id** - unique identifier for this item
+- **urlKey** - unique within content type, used to request detailed info for this item
+- **dateModified** - date that this item was last modified
+--
+
+GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-use&type=article
+< 200
+< Content-Type: application/json
+[
+    {
+        "id": "e1983c60-529f-4945-9a2a-59649cd86dc7",
+        "urlKey": "ios-app-faq",
+        "dateModified", "2012-08-31 02:04 PM"
+    },
+    {
+        "id": "6a1d7d14-cddc-445c-b2c8-415e6c6487cb",
+        "urlKey": "ios-app-privacy-policy",
+        "dateModified", "2012-08-30 05:13 PM"
+    },
+    {
+        "id": "fa0376f9-06c2-4392-aa2e-3ad47efedf37",
+        "urlKey": "ios-app-terms-of-use",
+        "dateModified", "2012-08-30 05:12 PM"
+    }
+]
+
+
+--
+Stars (WIP)
+
+##Query Parameters
+
+-   **urlKey** - url key of star list
+
+##Response
+
+-   **id** - unique identifier for this star
+-   **urlKey** - unique identifier for this star
+-   **type** - (person|series) disambiguation between items that represent stars vs series
+-   **title** - name of this star
+-   **description** - description of this star
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **theme**
+    -   **accent-color-1** - accent color for this star
+    -   **theme-background** - background image for this star
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+-   **options**
+    -   **hasGames** - flag indicating if this star/series has games available (defaults to true if unset)
+--
+
+GET /stars?urlKey=win8-star-feed
+< 200
+< Content-Type: application/json
+[
+    {
+        "id": "cba6b7aa-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-spongebob",
+        "type": "series",
+        "title": "SpongeBob",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-spongebob.png",
+                        "width": "408",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-spongebob.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From SpongeBob Squarepants",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-blue.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#34b3cb"
+        }
+    },
+    {
+        "id": "f1d56f00-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "miranda-cosgrove",
+        "type": "Person",
+        "title": "Miranda Cosgrove",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-miranda.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-miranda.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From iCarly",
+        "seriesUrlKey": "hs-icarly",
+        "seriesTitle": "iCarly",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-pink.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#e54096"
+        }
+    },
+    {
+        "id": "c7740134-1ad7-11e1-aca6-0026b9414f30",
+        "urlKey": "ninja-turtles",
+        "type": "series",
+        "title": "Leonardo",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-leonardo.png",
+                        "width": "384",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-leonardo.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Teenage Mutant Ninja Turtles",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-green.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#00653a"
+        }
+    },
+    {
+        "id": "f1d574c8-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "victoria-justice",
+        "type": "Person",
+        "title": "Victoria Justice",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-victoria.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-victoria.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Victorious",
+        "seriesUrlKey": "hs-victorious",
+        "seriesTitle": "Victorious",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-purple.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#7f3f98"
+        }
+    },
+    {
+        "id": "f1d57d60-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "kendall-schmidt",
+        "type": "Person",
+        "title": "Kendall Schmidt",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-kendall.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-kendall.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "seriesUrlKey": "hs-bigtimerush",
+        "seriesTitle": "Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "f1d57a4a-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "james-maslow",
+        "type": "Person",
+        "title": "James Maslow",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-james.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-james.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "f1d5804e-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "logan-henderson",
+        "type": "Person",
+        "title": "Logan Henderson",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-logan.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-logan.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "f1d57784-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "carlos-pena",
+        "type": "Person",
+        "title": "Carlos Pena",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-carlos.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-carlos.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "9a5419c5-f28b-45d2-a042-770024dd74f6",
+        "urlKey": "robotmonster",
+        "type": "series",
+        "title": "Monster",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-monster.png",
+                        "width": "337",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-monster.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Robot & Monster",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-purple.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#472f91"
+        }
+    },
+    {
+        "id": "6ab9f64e-9b0e-11e1-a549-0026b9414f30",
+        "urlKey": "cymphonique-miller",
+        "type": "Person",
+        "title": "Cymphonique Miller",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-cymphonique.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-cymphonique.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From How To Rock",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-blue.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#0081c6"
+        }
+    },
+    {
+        "id": "70d13aa7-a589-4c19-8ed5-f4cfa84b65af",
+        "urlKey": "legend-of-korra",
+        "type": "series",
+        "title": "Korra",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-korra.png",
+                        "width": "405",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-korra.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Legend of Korra",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    },
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-teal.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#37939b"
+        }
+    },
+    {
+        "id": "cb81db06-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-pr-samurai",
+        "type": "series",
+        "title": "The Red Ranger",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-red-ranger.png",
+                        "width": "350",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-red-ranger.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from Power Rangers: Super Samurai",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#b7111b"
+        }
+    },
+    {
+        "id": "cb773e58-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-winx-club",
+        "type": "series",
+        "title": "Bloom",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-bloom.png",
+                        "width": "411",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-bloom.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from Winx Club",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-pink.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d40078"
+        },
+        "options": {
+            "hasGames": "false"
+        }
+    },
+    {
+        "id": "23e4ccea-cda9-11e0-aca6-0026b9414f30",
+        "urlKey": "kung-fu-panda-legends-of-awesomeness",
+        "type": "series",
+        "title": "Po",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-po.png",
+                        "width": "370",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-po.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from Kung Fu Panda: Legends of Awesomeness",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#c41230"
+        }
+    },
+    {
+        "id": "fdb6b108-e32f-11e1-a549-0026b9414f30",
+        "urlKey": "noah-crawford",
+        "type": "Person",
+        "title": "Noah Crawford",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-noah.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-noah.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from How to Rock and You Gotta See This!",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-grey.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#ff8400"
+        }
+    },
+    {
+        "id": "561cd3ca-e32d-11e1-a549-0026b9414f30",
+        "urlKey": "chris-oneal",
+        "type": "Person",
+        "title": "Chris O'Neal",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-chris.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-chris.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from How To Rock and You Gotta See This!",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-grey.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#ff8400"
+        }
+    }
+]
+
+
+--
+Video
+
+##Query Parameters
+
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+  
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+-   **duration** - duration of this item (for video types only)
+-   **videoType** - (*unset*|clip|preview|tunein) descriptive type for this video
+-   **legacyId** - legacy video id for requesting media record
+-   **relatedVideos** - list of related video ids
+-   **rating** - rating for this video content
+--
+
+GET /video?id=1a197042-7a9a-11e0-8fe5-0026b9414f30
+< 200
+< Content-Type: application/json
+{ 
+    "id": "1a197042-7a9a-11e0-8fe5-0026b9414f30",
+    "urlKey": "icarly-310-iomg-clip-4-sam-kiss-freddie-seddie",
+    "title": "iCarly: \"iOMG: The Big OMG Moment\"",
+    "shortTitle": "iOMG: The Big OMG Moment",
+    "description": "Freddie encourages Sam to express her feelings and is left speechless by her response.",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "datePosted": "",
+    "seriesUrlKey": "hs-icarly",
+    "seriesTitle": "iCarly",            
+    "people": [
+        "jennette-mccurdy-sidekick",
+        "nathan-kress"
+    ],
+    "duration": "1:57",
+    "videoType": "",
+    "legacyId": "795796",
+    "relatedVideos": [
+        "videoid1",
+        "videoid2"
+    ],
+    "rating": "TV-Y7"
+}
+
+--
+Episode (WIP)
+
+##Query Parameters
+
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+  
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+-   **duration** - duration of this item (for video types only)
+-   **videoType** - (*unset*|clip|preview|tunein) descriptive type for this video
+-   **relatedVideos** - list of related video ids
+-   **rating** - rating for this video content
+-   **season** - season this episode aired during
+-   **episodeNumber** - number of this episode in the series
+-   **expirationDate** - date that this content expires
+-   **playlistId** - playlist id for this episode
+--
+
+GET /episode?id=11f4711a-4d56-4961-97f6-ee3fded0ed3a
+< 200
+< Content-Type: application/json
+{ 
+    "id": "11f4711a-4d56-4961-97f6-ee3fded0ed3a",
+    "urlKey": "legend-of-korra-101-full-episode",
+    "title": "Legend of Korra: \"Welcome to Republic City\"",
+    "shortTitle": "Welcome to Republic City",
+    "description": "Korra escapes to Republic City but she is met with trouble, will she make it out unscathed in the big city?",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/korra/legend-of-korra-101-full-episode.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "datePosted": "2012-05-11T09:06:00.000+0000",
+    "seriesUrlKey": "legend-of-korra",
+    "seriesTitle": "Legend of Korra",            
+    "people": [
+    ],
+    "duration": "0:00",
+    "episodeType": "Episode",
+    "relatedVideos": [
+        "videoid1",
+        "videoid2"
+    ],
+    "rating": "TV-Y7",
+    "season": "1",
+    "episodeNumber": "101",
+    "expirationDate": "",
+    "playlistId": "d80d69ac-9b17-11e1-a549-0026b9414f30"
+}
+
+--
+Game
+
+##Query Parameters
+
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+  
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **controlType** - (touch|keyboard) type of controls that this game supports
+-   **gameType** - (*unset*|action|adventure|funny|music|puzzle|race|racing|role playing|rumble|strategy) descriptive type for this game
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+--
+
+GET /game?urlKey=spongebob-squarepants-skater-sponge
+< 200
+< Content-Type: application/json
+{ 
+    "id": "665534f3-ac94-4862-bcd4-74f347b8be83",
+    "urlKey": "spongebob-squarepants-skater-sponge",
+    "title": "SpongeBob SquarePants: Skater Sponge",
+    "shortTitle": "Skater Sponge",
+    "description": "He's just a Skater Sponge, what more can we say?",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "controlType": "touch",
+    "gameType": "",
+    "datePosted": "",
+    "seriesUrlKey": "hs-spongebob",
+    "seriesTitle": "SpongeBob SquarePants",            
+    "people": [
+    ]
+}
+
+--
+Photo Album
+
+##Query Parameters
+
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+  
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+-   **photoCount** - number of photos in this album  
+-   **photos** - photos in this set
+    -   **image** - image for this photo
+    -   **type** - string identifier to determine placement (e.g. photo)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+    -   **title** - title for this photo
+    -   **shortTitle** - shortTitle for this photo
+    -   **caption** - caption for this photo
+--
+
+GET /photoAlbum?urlKey=spongebob-roadtrip-postcards-pictures
+< 200
+< Content-Type: application/json
+{ 
+    "id": "ov2kou",
+    "urlKey": "spongebob-roadtrip-postcards-pictures",
+    "title": "SpongeBob SquarePants: Road Trip Postcards",
+    "shortTitle": "Road Trip Postcards",
+    "description": "SpongeBob, Patrick, Plankton, Sandy & Mr. Krabs check in from the road with personalized postcards!",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "datePosted": "",
+    "seriesUrlKey": "hs-spongebob",
+    "seriesTitle": "SpongeBob SquarePants",            
+    "people": [
+    ],
+    "photoCount": 10,
+    "photos": [
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/01b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/02b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/03b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/04b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/05b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/06b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/07b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/08b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/09b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        },
+        {
+            "image": 
+            {
+                "assets": [
+                    {
+                        "path": "/spongebob-assets/tentpoles/Roadtrip/road-trip-postcards/10b.jpg",
+                        "aspectRatio": "4x3",
+                        "width": "640",   
+                        "height": "360"                             
+                    }                                
+                ]
+            },
+            "caption": ""
+        }        
+    ]
+}
+
+--
+Article (WIP)
+
+##Query Parameters
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+  
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **articleBlocks** - contents of this article
+    -   **title** - title of this article block
+    -   **content** - content of this article block
+    -   **image** - image for this article block
+    -   **caption** - caption for this article block
+    -   **video** - video for this article block
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+--
+
+GET /article?urlKey=privacy-policy-faqs
+< 200
+< Content-Type: application/json
+{ 
+    "id": "10ccb01b-7da2-425f-b6f4-8df294364a33",
+    "urlKey": "privacy-policy-faqs",
+    "title": "Parents & Preschool Privacy Policy FAQs",
+    "description": "Answers to frequently asked questions about the Nickelodeon Parents & Preschool privacy policy.",
+    "articleBlocks": [
+        {
+            "content": "Your privacy is very important to Nickelodeon Parents & Preschool. We always want you to know what information we collect, how we use it, and the types of third parties with whom we may share personally identifiable information, so that you can make informed decisions about information that pertains to you. In addition, we are continuously looking for ways to improve your experience with us. As our sites and offerings continue to grow and evolve, we will update our policies to reflect our revised privacy practices. This FAQ highlights the most recent changes to our privacy policy."
+        },
+        {
+            "title": "QUESTION: What are the important updates?",
+            "content": "Answer: There are several important updates:",
+        }
+    ],
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "datePosted": "",
+    "seriesUrlKey": "hs-spongebob",
+    "seriesTitle": "SpongeBob SquarePants",            
+    "people": [
+    ]
+}
+
+--
+Event (WIP)
+
+##Query Parameters
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **timelineEvents**
+    -   **title**
+    -   **description**
+    -   **dateTime**
+    -   **relatedItems**
+        -   **id**
+        -   **urlKey**
+        -   **type**
+        -   **title**
+        -   **shortTitle**
+        -   **description**
+        -   **images**
+        -   **datePosted** - date that this item was posted
+        -   **seriesUrlKey** - url key for the series this item is related to
+        -   **seriesTitle** - title of the series this item is related to
+        -   **people** - list or url keys for the people associated to this item   
+        -   **duration** - duration of this item (for video only)
+        -   **url** - external url for this item (for external only)
+        -   **photoCount** - number of photos in this album (for photoAlbum only)
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+-   **relatedItems**
+
+--
+
+GET /event?urlKey=70880229-1eea-42f0-a5d4-195f40f8e3cb
+< 200
+< Content-Type: application/json
+
+{
+    "id": "70880229-1eea-42f0-a5d4-195f40f8e3cb",
+    "urlKey": "70880229-1eea-42f0-a5d4-195f40f8e3cb",
+    "title": "A Week in the Life of Miranda",
+    "description": "Follow Miranda around for a week and get to see all she does with her free time!",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "timelineEvents": [
+        {
+            "title": "Miranda Goes to the Movies",
+            "description": "Check out this video of Miranda going to the movies!",
+            "dateTime": "2012-08-01 12:00AM",
+            "relatedItems": [
+                {
+                    "id": "1a197042-7a9a-11e0-8fe5-0026b9414f30",
+                    "urlKey": "icarly-310-iomg-clip-4-sam-kiss-freddie-seddie",
+                    "type": "video",
+                    "title": "iCarly: \"iOMG: The Big OMG Moment\"",
+                    "shortTitle": "iOMG: The Big OMG Moment",
+                    "description": "Freddie encourages Sam to express her feelings and is left speechless by her response.",
+                    "images": [
+                        "/nick-assets/video/images/icarly/icarly-310-iomg-clip-4-sam-kiss-freddie-seddie.jpg"
+                    ],
+                    "datePosted": "2012-08-01T04:00:00.000+0000",
+                    "seriesUrlKey": "hs-icarly",
+                    "seriesTitle": "iCarly",            
+                    "people": [
+                        "miranda-cosgrove"
+                    ],
+                    "duration": "1:57",
+                    "videoType": "clip",
+                    "legacyId": "795796"                            
+                }
+            ]
+        },
+        {
+            "title": "Miranda's Birthday",
+            "description": "Check out pictures from Miranda's Birthday on the set of iCarly!",
+            "dateTime": "2012-08-03 04:59PM",
+            "relatedItems": [
+                {
+                    "id": "96480dfe-87b0-11e0-8fe5-0026b9414f30",
+                    "urlKey": "miranda-cosgrove-birthday-pictures",
+                    "type": "photoAlbum",
+                    "title": "Miranda Cosgrove's Birthday on the iCarly Set!",
+                    "shortTitle": "",
+                    "description": "",
+                    "images": [
+                        "/nick-assets/shows/images/icarly/flipbooks/miranda-cosgrove-birthday/miranda-cosgrove-birthday-thumb.jpg"
+                    ],
+                    "datePosted": "",
+                    "seriesUrlKey": "hs-icarly",
+                    "seriesTitle": "iCarly",            
+                    "people": [
+                        "miranda-cosgrove",
+                        "jennette-mccurdy",
+                        "nathan-kress",
+                        "jerry-trainor",
+                        "noah-munck"
+                    ]                
+                }                
+            ]
+        }        
+    ],
+    "datePosted": "",
+    "seriesUrlKey": "hs-icarly",
+    "seriesTitle": "iCarly",
+    "people": [
+        "miranda-cosgrove"
+    ],
+    "relatedItems": [
+        {
+            "id": "1a197042-7a9a-11e0-8fe5-0026b9414f30",
+            "urlKey": "icarly-310-iomg-clip-4-sam-kiss-freddie-seddie",
+            "type": "video",
+            "title": "iCarly: \"iOMG: The Big OMG Moment\"",
+            "shortTitle": "iOMG: The Big OMG Moment",
+            "description": "Freddie encourages Sam to express her feelings and is left speechless by her response.",
+            "images": [
+                "/nick-assets/video/images/icarly/icarly-310-iomg-clip-4-sam-kiss-freddie-seddie.jpg"
+            ],
+            "datePosted": "2012-08-01T04:00:00.000+0000",
+            "seriesUrlKey": "hs-icarly",
+            "seriesTitle": "iCarly",            
+            "people": [
+                "miranda-cosgrove"
+            ],
+            "duration": "1:57",
+            "videoType": "clip",
+            "legacyId": "795796"                            
+        }
+    ],    
+    "theme": {
+        "accent-color-1": "#6d3085",
+        "accent-color-2": "#00cdf5",
+        "background-color" : "#ffffff",
+        "timeline-theme": "dark",
+        "photo-background": "/nick-assets/shows/images/iparty-with-victorious/themes/background.jpg"
+    }
+    
+}
+
+--
+Poll
+
+##Query Parameters
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **questions**
+    -   **displayText**
+    -   **answers**
+        -  **displayText**
+        -  **image**
+-   **collectionAlias** - alias for this poll for submitting votes (url pattern to submit vote provided in config feed, answer should be posted as form field 'question', value is 0 based index of choice)
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+
+--
+
+GET /poll?urlKey=sample-ios-poll
+< 200
+< Content-Type: application/json
+{
+    "id": "968af55d-6b61-41fe-8c9a-469736ea2294",
+    "urlKey": "sample-ios-poll",
+    "title": "Who's Your Favorite Character From The Legend of Korra?",
+    "description": "",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "questions" : [
+        {
+            "displayText": "Who's Your Favorite Character From The Legend of Korra?"
+            "answers": [
+                {
+                    "displayText": "Korra Avatar",
+                    "image": ""
+                },
+                {
+                    "displayText": "Mako Firebender",
+                    "image": ""
+                },
+                {
+                    "displayText": "Bolin Earthbender",
+                    "image": ""
+                }                
+            ]
+        }
+    ],
+    "collectionAlias": "test_nick_app_poll",
+    "datePosted": "",
+    "seriesUrlKey": "hs-icarly",
+    "seriesTitle": "iCarly",
+    "people": [
+        "miranda-cosgrove"
+    ]        
+}
+
+--
+Configuration
+
+##Query Parameters
+
+-   **apiKey** - unique apiKey for this application
+
+##Response
+List of key/value pairs specific to this application
+
+-   **baseImageUrl** - base url for any image assets
+-   **gameUrlTemplate** - url template for flash games
+-   **mediaGenUrlTemplate** - url template for media gen feed
+-   **starsFeedUrlKey** - url key to use for stars feed
+-   **pollSubmissionUrlTemplate** - url template to submit poll
+
+--
+
+GET /configuration?apiKey=iafhdwlb
+< 200
+< Content-Type: application/json
+{
+    "baseImageUrl": "http://nick.mtvnimages.com",
+    "gameUrlTemplate": "http://www.nick.com/games/nickapp/{urlKey}.html",
+    "mediaGenUrlTemplate": "http://www.nick.com/dynamo/video/data/mediaGen.jhtml?mgid=mgid:cms:video:nick.com:{legacyId}&block=true&type=network&videoId={videoId}&acceptMethods=phttp",
+    "starsFeedUrl": "win8-star-feed",
+    "pollSubmissionUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/entries.json"
+}
+
+--
+Game Types
+
+--
+
+GET /gameTypes
+< 200
+< Content-Type: application/json
+[
+"Fitness",
+"Console",
+"Third-Person",
+"Turn-Based",
+"Extreme",
+"Trivia",
+"All",
+"Fighter",
+"Pinball",
+"Strategy",
+"3-D",
+"Stealth",
+"Puzzle",
+"Kids",
+"First-Person",
+"Sci-Fi",
+"Role Playing",
+"Action",
+"Card-Based",
+"Rhythm",
+"Movie-Based",
+"Party",
+"Skill",
+"RPG",
+"Side-Scroller",
+"Simulator",
+"Adult",
+"Graphic Novel",
+"Adventure",
+"Music",
+"Dance",
+"Arcade",
+"Flight",
+"Sports",
+"Racing",
+"Educational",
+"Platformer",
+"Episodic",
+"Shooter",
+"Survival Horror",
+"Real-Time",
+"2-D",
+"MMO",
+"Family",
+"3D",
+"Action",
+"Adventure",
+"Card",
+"ClubHouses",
+"ClubCinema"
+]
+
+
+--
+Proposed Image Format
+
+--
+GET /image
+< 200
+< Content-Type: application/json
+{
+    "images": [
+        {
+            "type": "thumbnail",
+            "assets": [
+                {
+                    "path": "/path/to/this/image4x3.png",
+                    "aspectRatio": "4:3",
+                    "width": "400",   
+                    "height": "300"                             
+                },
+                {
+                    "path": "/path/to/this/image16x9.png",
+                    "aspectRatio": "16:9",
+                    "width": "1600",   
+                    "height": "900"                             
+                },
+                {
+                    "path": "/path/to/this/image1x1.png",
+                    "aspectRatio": "1:1",
+                    "width": "500",   
+                    "height": "500"                             
+                }                                
+            ]
+        },
+        {
+            "type": "featured",
+            "assets": [
+                {
+                    "path": "/path/to/this/image4x3.png",
+                    "aspectRatio": "4:3",
+                    "width": "400",   
+                    "height": "300"                             
+                },
+                {
+                    "path": "/path/to/this/image16x9.png",
+                    "aspectRatio": "16:9",
+                    "width": "1600",   
+                    "height": "900"                             
+                },
+                {
+                    "path": "/path/to/this/image1x1.png",
+                    "aspectRatio": "1:1",
+                    "width": "500",   
+                    "height": "500"                             
+                }                                
+            ]
+        }        
+    ]
+}undefined
