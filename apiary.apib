@@ -320,6 +320,66 @@ GET /blog-collection?people=victoria-justice
     ]
 }
 
+--
+Tweets
+
+One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
+
+##Query Parameters  
+
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+  
+##Response
+
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **title** - twitter handle for this tweet
+    -   **description** - text content for this tweet
+    -   **datePosted** - date that this item was posted
+    -   **seriesUrlKey** - url key for the series this item is related to
+    -   **seriesTitle** - title of the series this item is related to
+    -   **people** - list or url keys for the people associated to this item
+--
+
+GET /twitter/tweets?people=victoria-justice,avan-jogia
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 3,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "256466726634549248",
+            "title": "ATJogia",
+            "description": "Today is also international #DayOfTheGirl Join @VictoriaJustice &amp;\n@GirlUp in their campaign to empower young women around the world.",
+            "datePosted": "2012-10-11T22:50:00.000+0000"
+        },
+        {
+            "id": "256462331322720257",
+            "title": "ATJogia",
+            "description": "Thanks for all the retweets on my last post, and for spreading the #ComingOut #SpiritDay and @WeAreSBNN message.",
+            "datePosted": "2012-10-11T22:32:00.000+0000"
+        },
+        {
+            "id": "256190519288418304",
+            "title": "VictoriaJustice",
+            "description": "@VictoriaIsBoss Ha! #RubberFace",
+            "datePosted": "2012-10-11T04:32:00.000+0000"
+        }
+    ]
+}
 
 --
 Editorial Content Collection  
