@@ -350,33 +350,59 @@ One of **people** or **series** is required. Currently, you cannot query by both
     -   **people** - list or url keys for the people associated to this item
 --
 
-GET /twitter/tweets?people=victoria-justice,avan-jogia
+GET /twitter/tweets?apiKey=iafhdwlb&people=kendall-schmidt,jennette-mccurdy
 < 200
 < Content-Type: application/json
 {
     "meta": {
         "start": 0,
-        "count": 3,
+        "count": 4,
         "status": "SUCCESS"
     },
     "results": [
         {
-            "id": "256466726634549248",
-            "title": "ATJogia",
-            "description": "Today is also international #DayOfTheGirl Join @VictoriaJustice &amp;\n@GirlUp in their campaign to empower young women around the world.",
-            "datePosted": "2012-10-11T22:50:00.000+0000"
+            "id": "256437731675226113",
+            "title": "HeffronDrive",
+            "description": "Wow time goes be in a flash\nThank you all!\nObviously we wouldn't be where we are without our fans/friends/followers\n#HappyBTR2ndAnniversary",
+            "seriesUrlKey": "hs-bigtimerush",
+            "seriesTitle": "Big Time Rush",
+            "people": [
+                "kendall-schmidt"
+            ],
+            "datePosted": "2012-10-11T20:54:00.000+0000"
         },
         {
-            "id": "256462331322720257",
-            "title": "ATJogia",
-            "description": "Thanks for all the retweets on my last post, and for spreading the #ComingOut #SpiritDay and @WeAreSBNN message.",
-            "datePosted": "2012-10-11T22:32:00.000+0000"
+            "id": "256183143135076352",
+            "title": "jennettemccurdy",
+            "description": "My iPad betrays me every time I am listening to embarrassing music and the album cover image engulfs my entire screen.",
+            "seriesUrlKey": "hs-icarly",
+            "seriesTitle": "iCarly",
+            "people": [
+                "jennette-mccurdy"
+            ],
+            "datePosted": "2012-10-11T04:03:00.000+0000"
         },
         {
-            "id": "256190519288418304",
-            "title": "VictoriaJustice",
-            "description": "@VictoriaIsBoss Ha! #RubberFace",
-            "datePosted": "2012-10-11T04:32:00.000+0000"
+            "id": "256176203709415424",
+            "title": "jennettemccurdy",
+            "description": "What should I be for Halloween... katy perry, a banana, or tilda swinton?",
+            "seriesUrlKey": "hs-icarly",
+            "seriesTitle": "iCarly",
+            "people": [
+                "jennette-mccurdy"
+            ],
+            "datePosted": "2012-10-11T03:35:00.000+0000"
+        },
+        {
+            "id": "256175551268675584",
+            "title": "jennettemccurdy",
+            "description": "“@ArianaGrande: We love Ron Weasley's new single? @JennetteMccurdy” hahahaha. Ha.",
+            "seriesUrlKey": "hs-icarly",
+            "seriesTitle": "iCarly",
+            "people": [
+                "jennette-mccurdy"
+            ],
+            "datePosted": "2012-10-11T03:33:00.000+0000"
         }
     ]
 }
