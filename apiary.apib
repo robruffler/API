@@ -680,6 +680,584 @@ GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-u
 
 
 --
+Categories
+
+##Query Parameters
+
+-   **urlKey** - url key of star list
+
+##Response
+
+-   **id** - unique identifier for this star
+-   **urlKey** - unique identifier for this star
+-   **type** - (person|series) disambiguation between items that represent stars vs series
+-   **title** - name of this star
+-   **description** - description of this star
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **supportingCast** - list of supporting cast members for this star
+    -   **id** - unique identifier for this supporting cast member
+    -   **urlKey** - unique identifier for this supporting cast member
+    -   **type** - (person|series) disambiguation between items that represent stars vs series
+    -   **title** - name of this supporting cast member
+    -   **description** - description of this supporting cast membe
+    -   **images** - list of images for this item
+        -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+    -   **seriesUrlKey** - url key for the series this item is related to
+    -   **seriesTitle** - title of the series this item is related to
+-   **theme**
+    -   **accent-color-1** - accent color for this star
+    -   **theme-background** - background image for this star
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+-   **options**
+    -   **hasGames** - flag indicating if this star/series has games available (defaults to true if unset)
+--
+
+GET /categories?urlKey=ios-star-feed&apiKey=gve7v8ti
+< 200
+< Content-Type: application/json
+[
+    {
+        "id": "f1d56f00-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "miranda-cosgrove",
+        "type": "Person",
+        "title": "Miranda Cosgrove",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-miranda.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "iCarly",
+        "seriesUrlKey": "hs-icarly",
+        "seriesTitle": "iCarly",
+        "supportingCast": [
+            {
+                "id": "f1d571ee-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "jennette-mccurdy",
+                "type": "Person",
+                "title": "Jennette McCurdy",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/jennette-mccurdy/star-jennette-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "iCarly",
+                "seriesUrlKey": "hs-icarly",
+                "seriesTitle": "iCarly"
+            },
+            {
+                "id": "f1d5a7f4-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "jerry-trainor",
+                "type": "Person",
+                "title": "Jerry Trainor",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/jerry-trainor/star-jerry-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "iCarly",
+                "seriesUrlKey": "hs-icarly",
+                "seriesTitle": "iCarly"
+            },
+            {
+                "id": "f1d5cf9a-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "noah-munck",
+                "type": "Person",
+                "title": "Noah Munck",
+                "description": "iCarly",
+                "seriesUrlKey": "hs-icarly",
+                "seriesTitle": "iCarly"
+            },
+            {
+                "id": "f1d5a4ca-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "nathan-kress",
+                "type": "Person",
+                "title": "Nathan Kress",
+                "description": "iCarly",
+                "seriesUrlKey": "hs-icarly",
+                "seriesTitle": "iCarly"
+            }
+        ]
+    },
+    {
+        "id": "cba6b7aa-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-spongebob",
+        "type": "series",
+        "title": "SpongeBob",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-spongeBob.png",
+                        "width": "1000",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "SpongeBob Squarepants",
+        "seriesTitle": "SpongeBob SquarePants"
+    },
+    {
+        "id": "f1d574c8-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "victoria-justice",
+        "type": "Person",
+        "title": "Victoria Justice",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-victoria.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Victorious",
+        "seriesUrlKey": "hs-victorious",
+        "seriesTitle": "Victorious",
+        "supportingCast": [
+            {
+                "id": "f1d5b30c-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "ariana-grande",
+                "type": "Person",
+                "title": "Ariana Grande",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/ariana-grande/stars-ariana-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "Victorious",
+                "seriesUrlKey": "hs-victorious",
+                "seriesTitle": "Victorious"
+            },
+            {
+                "id": "f1d5aaec-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "liz-gillies",
+                "type": "Person",
+                "title": "Liz Gillies",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/liz-gillies/stars-liz-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "Victorious",
+                "seriesUrlKey": "hs-victorious",
+                "seriesTitle": "Victorious"
+            },
+            {
+                "id": "f1d5c6d0-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "avan-jogia",
+                "type": "Person",
+                "title": "Avan Jogia",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/avan-jogia/stars-avan-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "Victorious",
+                "seriesUrlKey": "hs-victorious",
+                "seriesTitle": "Victorious"
+            },
+            {
+                "id": "f1d5c9aa-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "daniella-monet",
+                "type": "Person",
+                "title": "Daniella Monet",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/daniella-monet/stars-daniella-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "Victorious",
+                "seriesUrlKey": "hs-victorious",
+                "seriesTitle": "Victorious"
+            },
+            {
+                "id": "f1d5b154-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "matt-bennett",
+                "type": "Person",
+                "title": "Matt Bennett",
+                "description": "Victorious",
+                "seriesUrlKey": "hs-victorious",
+                "seriesTitle": "Victorious"
+            },
+            {
+                "id": "f1d5adc6-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "leon-thomas",
+                "type": "Person",
+                "title": "Leon Thomas",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/leon-thomas/stars-leon-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    }
+                ],
+                "description": "Victorious",
+                "seriesUrlKey": "hs-victorious",
+                "seriesTitle": "Victorious"
+            }
+        ]
+    },
+    {
+        "id": "c7740134-1ad7-11e1-aca6-0026b9414f30",
+        "urlKey": "ninja-turtles",
+        "type": "series",
+        "title": "Leonardo",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-leonardo.png",
+                        "width": "862",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Teenage Mutant Ninja Turtles",
+        "seriesTitle": "Teenage Mutant Ninja Turtles"
+    },
+    {
+        "id": "f1d57d60-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "kendall-schmidt",
+        "type": "Person",
+        "title": "Kendall Schmidt",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/kendall-schimdt/star-kendall-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "seriesUrlKey": "hs-bigtimerush",
+        "seriesTitle": "Big Time Rush"
+    },
+    {
+        "id": "f1d57a4a-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "james-maslow",
+        "type": "Person",
+        "title": "James Maslow",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/james-maslow/star-james-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "seriesUrlKey": "hs-bigtimerush",
+        "seriesTitle": "Big Time Rush"
+    },
+    {
+        "id": "f1d5804e-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "logan-henderson",
+        "type": "Person",
+        "title": "Logan Henderson",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/logan-henderson/star-logan-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "seriesUrlKey": "hs-bigtimerush",
+        "seriesTitle": "Big Time Rush"
+    },
+    {
+        "id": "f1d57784-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "carlos-pena",
+        "type": "Person",
+        "title": "Carlos Pena",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/carlos-pena/star-carlos-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "seriesUrlKey": "hs-bigtimerush",
+        "seriesTitle": "Big Time Rush"
+    },
+    {
+        "id": "f1d6ad98-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "ryan-potter",
+        "type": "Person",
+        "title": "Ryan Potter",
+        "description": "Supah Ninjas",
+        "seriesUrlKey": "hs-supah-ninjas",
+        "seriesTitle": "Supah Ninjas",
+        "supportingCast": [
+            {
+                "id": "f1d6ac1c-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "gracie-dzienny",
+                "type": "Person",
+                "title": "Gracie Dzienny",
+                "description": "Supah Ninjas",
+                "seriesUrlKey": "hs-supah-ninjas",
+                "seriesTitle": "Supah Ninjas"
+            },
+            {
+                "id": "f1d6b05e-57b6-11e1-9c48-0026b9414f30",
+                "urlKey": "carlos-knight",
+                "type": "Person",
+                "title": "Carlos Knight",
+                "description": "Supah Ninjas",
+                "seriesUrlKey": "hs-supah-ninjas",
+                "seriesTitle": "Supah Ninjas"
+            }
+        ]
+    },
+    {
+        "id": "23e4ccea-cda9-11e0-aca6-0026b9414f30",
+        "urlKey": "kung-fu-panda-legends-of-awesomeness",
+        "type": "series",
+        "title": "Po",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-po.png",
+                        "width": "810",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Kung Fu Panda: Legends of Awesomeness",
+        "seriesTitle": "Kung Fu Panda: Legends of Awesomeness"
+    },
+    {
+        "id": "cb773e58-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-winx-club",
+        "type": "series",
+        "title": "Bloom",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-bloom.png",
+                        "width": "810",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Winx Club",
+        "seriesTitle": "Winx Club"
+    },
+    {
+        "id": "cb81db06-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-pr-samurai",
+        "type": "series",
+        "title": "The Red Ranger",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-red-ranger.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Power Rangers: Super Samurai",
+        "seriesTitle": "Power Rangers: Super Samurai"
+    },
+    {
+        "id": "101534f6-13e5-11e2-8969-0026b9414f30",
+        "urlKey": "lucas-cruikshank",
+        "type": "Person",
+        "title": "Lucas Cruikshank",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/lucas-cruikshank/stars-lucas-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Marvin Marvin"
+    },
+    {
+        "id": "cb937a32-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-penguins",
+        "type": "series",
+        "title": "Skipper",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-skipper.png",
+                        "aspectRatio": "1x1",
+                        "width": "736",
+                        "height": "736"
+                    }
+                ]
+            }
+        ],
+        "description": "Kung Fu Panda: Legends of Awesomeness",
+        "seriesTitle": "The Penguins of Madagascar"
+    },
+    {
+        "id": "9a5419c5-f28b-45d2-a042-770024dd74f6",
+        "urlKey": "robotmonster",
+        "type": "series",
+        "title": "Monster",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/carousel/star-monster.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Robot & Monster",
+        "seriesTitle": "Robot & Monster"
+    },
+    {
+        "id": "cb93d842-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-fop",
+        "type": "series",
+        "title": "Timmy",
+        "description": "My Fairly OddParents",
+        "seriesTitle": "The Fairly OddParents"
+    },
+    {
+        "id": "70d13aa7-a589-4c19-8ed5-f4cfa84b65af",
+        "urlKey": "legend-of-korra",
+        "type": "series",
+        "title": "Korra",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/legend-of-korra/star-korra-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            }
+        ],
+        "description": "Legend of Korra",
+        "seriesTitle": "Legend of Korra"
+    },
+    {
+        "id": "65d32050-1152-43d2-8f42-ab5d22025d98",
+        "urlKey": "burkely-duffield",
+        "type": "Person",
+        "title": "Burkely Duffield",
+        "description": "House of Anubis",
+        "seriesUrlKey": "hs-anubis-V2",
+        "seriesTitle": "House of Anubis"
+    }
+]
+
+
+--
 Stars (WIP)
 
 ##Query Parameters
