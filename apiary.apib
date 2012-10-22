@@ -189,38 +189,198 @@ The **types** parameter is always required. One of **people** or **series** is r
     - **status** - status of this record (deleted)
 --
 
-GET /content-collection-delta?types=video&series=hs-spongebob&fromDate=datetime
+GET /content-collection-delta?types=episode,video,game,poll&days=1
 < 200
 < Content-Type: application/json
 {
     "meta": {
-        "status": 0,
-        "count": 3,
-        "totalCount": 3
+        "start": 0,
+        "count": 5,
+        "totalCount": 5,
+        "status": "SUCCESS"
     },
     "results": [
         {
-            "id": "ddec2d94-fb40-11e0-aca6-0026b9414f30",
-            "urlKey": "spongebob-164-barnacle-face-the-zit-doesnt-quit-clip",
+            "id": "525dad4c-2f8c-462f-8314-1ebb69c3d10b",
+            "urlKey": "icarly-halloween-favorite-thing",
             "type": "video",
-            "title": "SpongeBob SquarePants: \"Barnacle Face: The Zit That Doesn't Quit\"",
-            "shortTitle": "Barnacle Face: The Zit That Doesn't Quit", 
-            "description": "SpongeBob uses a variety of industrial-strength tools to remove a barnacle blemish from Pearl's face.",
-            "images": [
-                "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg"
-            ],
-            "datePosted": "",
-            "seriesUrlKey": "hs-spongebob",
-            "seriesTitle": "SpongeBob SquarePants",            
+            "title": "iCarly Favorite Thing about Halloween",
+            "shortTitle": "iCarly Favorite Thing about Halloween",
+            "description": "The iCarly crew list off the things they enjoy about Haloween.",
+            "seriesUrlKey": "hs-icarly",
+            "seriesTitle": "iCarly",
             "people": [
+                "miranda-cosgrove",
+                "nathan-kress",
+                "jennette-mccurdy"
             ],
-            "duration": "0:46",
+            "duration": "0:53",
+            "datePosted": "2012-10-19T15:52:20.000+0000",
+            "videoType": "clip"
         },
         {
-            "id": "e872b83c-fb40-11e0-aca6-0026b9414f30",
-            "contentType": "video",
-            "status": "deleted"
+            "id": "5fcab039-a0ef-449a-b5e3-c8c49ecaddf0",
+            "urlKey": "ygst-107-rockin-out",
+            "type": "video",
+            "title": "You Gotta See This!: \"Rockin' Out\"",
+            "shortTitle": "Rockin' Out",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        }
+                    ]
+                }
+            ],
+            "description": "Sometimes, the music just can't let you go!",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "0:37",
+            "datePosted": "2012-10-19T16:44:37.000+0000",
+            "videoType": "clip"
+        },
+        {
+            "id": "053aa2b1-16b0-49f1-b4bf-248c9a5bc686",
+            "urlKey": "ygst-111-fenced-in",
+            "type": "video",
+            "title": "You Gotta See This!: \"Basketball on Unicycles\"",
+            "shortTitle": "You Gotta See This!: \"Basketball on Unicycles\"",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/you-gotta-see-this/ygst-111-fenced-in-16x9.jpg",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-111-fenced-in-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-111-fenced-in-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        }
+                    ]
+                }
+            ],
+            "description": "These guys push the boundaries of the game until they fall out!",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "0:46",
+            "datePosted": "2012-10-04T16:25:02.000+0000",
+            "videoType": "clip"
+        },
+        {
+            "id": "2afe0568-c18b-48f6-ac32-c0920c9c6e33",
+            "urlKey": "ygst-114-ele-fail",
+            "type": "video",
+            "title": "You Gotta See This!: \"Ele-Fail\"",
+            "shortTitle": "Ele-Fail",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/you-gotta-see-this/ygst-114-ele-fail-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-114-ele-fail-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-114-ele-fail-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        }
+                    ]
+                }
+            ],
+            "description": "It's not as easy as you'd think to climb an elephant.",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "0:54",
+            "videoType": "clip"
+        },
+        {
+            "id": "9216367c-6bb5-46fd-a833-6bc7d4b80e61",
+            "urlKey": "ygst-110-the-toss-up",
+            "type": "video",
+            "title": "You Gotta See This!: \"The Toss Up\"",
+            "shortTitle": "You Gotta See This!: \"The Toss Up\"",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        },
+                        {
+                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        },
+                        {
+                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "For this kid, flippin' pizzas is easy as pie!",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "1:07",
+            "datePosted": "2012-09-18T14:13:05.000+0000",
+            "videoType": "clip"
         }
+    ]
 }
 
 --
