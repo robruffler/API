@@ -161,7 +161,7 @@ GET /content-collection?types=video&series=hs-spongebob
 }
 
 --
-Content Collection Delta (WIP)
+Content Collection Delta
 
 The **types** parameter is always required. One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
 
@@ -170,7 +170,7 @@ The **types** parameter is always required. One of **people** or **series** is r
 -   **types (required)** - (video|episode|playlist|blog|photoAlbum|game|external) comma delimited list of content types
 -   **people** - comma delimited list of person url keys  
 -   **series** - comma delimited list of series url keys
--   **fromDate (required)** - date and time to base delta from
+-   **days (required)** - number of days since last data load - currently capped at 7
 -   **rows** - number of rows to return per page, default is 50, max is 200
 -   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
   
