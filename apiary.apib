@@ -510,7 +510,7 @@ One of **people** or **series** is required. Currently, you cannot query by both
     -   **people** - list or url keys for the people associated to this item
 --
 
-GET /twitter/tweets?apiKey=iafhdwlb&people=kendall-schmidt,jennette-mccurdy
+GET /twitter/tweets?people=kendall-schmidt,jennette-mccurdy
 < 200
 < Content-Type: application/json
 {
@@ -1007,7 +1007,7 @@ Categories
     -   **hasGames** - flag indicating if this star/series has games available (defaults to true if unset)
 --
 
-GET /categories?urlKey=ios-star-feed&apiKey=gve7v8ti
+GET /categories?urlKey=ios-star-feed
 < 200
 < Content-Type: application/json
 [
@@ -3056,7 +3056,7 @@ List of key/value pairs specific to this application
 
 --
 
-GET /configuration?apiKey=iafhdwlb
+GET /configuration
 < 200
 < Content-Type: application/json
 {
