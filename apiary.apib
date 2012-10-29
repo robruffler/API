@@ -840,6 +840,59 @@ GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-u
 
 
 --
+Notification - Broadcast
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+--
+GET /api/notification-broadcast?apiKey=gve7v8ti
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 3,
+        "totalCount": 3,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "16f758ea-351e-4e2f-8c7b-d6361665766b",
+            "urlKey": "16f758ea-351e-4e2f-8c7b-d6361665766b",
+            "type": "broadcast-msg",
+            "title": "Tune in to the World Wide Day of Play tomorrow!!",
+            "shortTitle": "Tune in to the World Wide Day of Play tomorrow!!"
+        },
+        {
+            "id": "95787335-d78f-4465-bebb-5d554adf7da7",
+            "urlKey": "95787335-d78f-4465-bebb-5d554adf7da7",
+            "type": "broadcast-msg",
+            "title": "Kids pick the President",
+            "shortTitle": "Kids pick the President"
+        },
+        {
+            "id": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
+            "urlKey": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
+            "type": "broadcast-msg",
+            "title": "Did you know?",
+            "shortTitle": "Did you know?"
+        }
+    ]
+}
+
+--
 Categories
 
 ##Query Parameters
