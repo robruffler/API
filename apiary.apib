@@ -840,7 +840,12 @@ GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-u
 
 
 --
-Notification - Broadcast
+Notification: Broadcast
+
+##Query Parameters  
+
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
 
 ##Response
 - **meta** - information about the response
@@ -857,7 +862,7 @@ Notification - Broadcast
     -   **title** - title of this item
     -   **shortTitle** - short title of this item
 --
-GET /api/notification-broadcast?apiKey=gve7v8ti
+GET /api/notification-broadcast
 < 200
 < Content-Type: application/json
 {
@@ -888,6 +893,66 @@ GET /api/notification-broadcast?apiKey=gve7v8ti
             "type": "broadcast-msg",
             "title": "Did you know?",
             "shortTitle": "Did you know?"
+        }
+    ]
+}
+
+--
+Notification: Talent Alert
+
+##Query Parameters  
+
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **people** - list or url keys for the people associated to this item
+--
+GET /api/talent-alert?people=miranda-cosgrove,victoria-justice
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 2,
+        "totalCount": 2,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
+            "urlKey": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
+            "type": "talent-alert",
+            "title": "Flying through California",
+            "shortTitle": "Flying through California",
+            "people": [
+                "miranda-cosgrove"
+            ]
+        },
+        {
+            "id": "b01486a4-113b-4458-aea2-934c19734a3a",
+            "urlKey": "b01486a4-113b-4458-aea2-934c19734a3a",
+            "type": "talent-alert",
+            "title": "Check out my new music video",
+            "shortTitle": "Check out my new music video",
+            "people": [
+                "victoria-justice"
+            ]
         }
     ]
 }
