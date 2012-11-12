@@ -1964,6 +1964,136 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
 
 
 --
+New Episodes
+  list of new episodes (Original Air Date <- 7 days)
+
+##Query Parameters
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **images** - list of images for this item
+        -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+    -   **seriesUrlKey** - url key for the series this item is related to
+    -   **seriesTitle** - title of the series this item is related to
+    -   **datePosted** - date that this item was posted
+    -   **duration** - duration of this item
+    -   **rating** - rating of this episode
+    -   **episodeNumber** - episode number for this episode 
+--
+
+
+GET /new-episodes?series=hs-spongebob,ninja-turtles,robotmonster,legend-of-korra,hs-pr-samurai,hs-winx-club,kung-fu-panda-legends-of-awesomeness
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 2,
+        "totalCount": 2,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "bf193360-92cd-431a-8f5c-1b1155eeac17",
+            "urlKey": "robot-and-monster-116-full-episode",
+            "type": "episode",
+            "title": "Robot & Monster: \"The Party & First Impressions\"",
+            "shortTitle": "The Party & First Impressions",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "698",
+                            "height": "698"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "Robot showcases a new invention to his family. Monster helps Robot become an apprentice.",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "duration": "30:00",
+            "datePosted": "2012-09-24T14:31:32.000+0000",
+            "rating": "TV-Y7",
+            "episodeNumber": "116"
+        },
+        {
+            "id": "209c6082-79ce-49c6-a6f4-cb1293895573",
+            "urlKey": "robot-and-monster-114-full-episode",
+            "type": "episode",
+            "title": "Robot & Monster: \"Apartment 3 1/2 & Don't Walk\"",
+            "shortTitle": "Apartment 3 1/2 & Don't Walk",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        }
+                    ]
+                }
+            ],
+            "description": "Monster makes an imaginary friend and loses his walking license.",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "duration": "30:00",
+            "datePosted": "2012-09-07T19:15:26.000+0000",
+            "rating": "TV-Y7",
+            "episodeNumber": "114"
+        }
+    ]
+}
+
+
+--
 Stars (Deprecated)
   use Categories instead
 
