@@ -2878,7 +2878,7 @@ GET /video?id=1a197042-7a9a-11e0-8fe5-0026b9414f30
 }
 
 --
-Episode (WIP)
+Episode
 
 ##Query Parameters
 
@@ -2905,7 +2905,7 @@ Episode (WIP)
 -   **people** - list or url keys for the people associated to this item
 -   **duration** - duration of this item (for video types only)
 -   **videoType** - (*unset*|clip|preview|tunein) descriptive type for this video
--   **relatedVideos** - list of related video ids
+-   **relatedItems** - list of related items
 -   **rating** - rating for this video content
 -   **season** - season this episode aired during
 -   **episodeNumber** - number of this episode in the series
@@ -2916,40 +2916,230 @@ Episode (WIP)
 GET /episode?id=11f4711a-4d56-4961-97f6-ee3fded0ed3a
 < 200
 < Content-Type: application/json
-{ 
-    "id": "11f4711a-4d56-4961-97f6-ee3fded0ed3a",
-    "urlKey": "legend-of-korra-101-full-episode",
-    "title": "Legend of Korra: \"Welcome to Republic City\"",
-    "shortTitle": "Welcome to Republic City",
-    "description": "Korra escapes to Republic City but she is met with trouble, will she make it out unscathed in the big city?",
+{
+    "id": "bdaa2191-5b78-4dc3-8fca-86264c9b3942",
+    "urlKey": "robot-and-monster-118-full-episode-a",
+    "type": "episode",
+    "title": "Robot & Monster: \"Game On & Bad News Baconeers\"",
+    "shortTitle": "Game On & Bad News Baconeers",
     "images": [
         {
             "assets": [
                 {
-                    "path": "/nick-assets/video/images/korra/legend-of-korra-101-full-episode.jpg",
+                    "path": "/nick/video/images/robot-and-monster/robot-and-monster-118-full-ep-4x3.jpg",
+                    "aspectRatio": "4x3",
+                    "width": "1024",
+                    "height": "768"
+                },
+                {
+                    "path": "/nick/video/images/robot-and-monster/robot-and-monster-118-full-ep-1x1.jpg",
+                    "aspectRatio": "4x3",
+                    "width": "698",
+                    "height": "698"
+                },
+                {
+                    "path": "/nick/video/images/robot-and-monster/robot-and-monster-118-full-ep-16x9.jpg",
                     "aspectRatio": "16x9",
-                    "width": "640",   
-                    "height": "360"                             
-                }                                
+                    "width": "1024",
+                    "height": "576"
+                }
             ]
         }
     ],
-    "datePosted": "2012-05-11T09:06:00.000+0000",
-    "seriesUrlKey": "legend-of-korra",
-    "seriesTitle": "Legend of Korra",            
-    "people": [
-    ],
-    "duration": "0:00",
-    "episodeType": "Episode",
-    "relatedVideos": [
-        "videoid1",
-        "videoid2"
+    "description": "Robot and Monster compete with their friends in a game show. The gang tries out a new sport.",
+    "seriesUrlKey": "robotmonster",
+    "seriesTitle": "Robot & Monster",
+    "duration": "30:00",
+    "datePosted": "2012-09-27T17:19:07.000+0000",
+    "relatedItems": [
+        {
+            "id": "71da25ce-ca07-4393-bf69-697d9c854820",
+            "urlKey": "robot-and-monster-118-clip",
+            "type": "video",
+            "title": "Robot & Monster: \"Game On: Let's Win!\"",
+            "shortTitle": "\"Game On: Let's Win!\"",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-118-clip-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-118-clip-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-118-clip-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        }
+                    ]
+                }
+            ],
+            "description": "Robot & Monster star in their favorite TV game show - \"Ow! That' Hurts!\"",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "duration": "1:07",
+            "datePosted": "2012-09-25T19:12:11.000+0000",
+            "videoType": "clip"
+        },
+        {
+            "id": "4d8a7a60-b355-478f-a921-dbe86102e09e",
+            "urlKey": "robot-and-monster-location-scouting-pictures",
+            "type": "photoAlbum",
+            "title": " Robot & Monster: Location Scouting",
+            "shortTitle": "Location Scouting",
+            "photoCount": 15,
+            "images": [
+                {
+                    "type": "Thumbnail",
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/locations/locations-thumb-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/locations/locations-thumb-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "1024",
+                            "height": "1024"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/locations/locations-thumb-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "Monster brings you around to see the sights and meet the citizens of his favorite city!",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "datePosted": "2012-08-23T19:02:31.000+0000"
+        },
+        {
+            "id": "db0e5bf4-4d41-40f8-b656-efb501e7487b",
+            "urlKey": "robot-and-monster-inventions-pictures",
+            "type": "photoAlbum",
+            "title": "Robot & Monster: Inventions",
+            "shortTitle": "Inventions",
+            "photoCount": 10,
+            "images": [
+                {
+                    "type": "Thumbnail",
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/inventions/robot-monster-inventions-thumb.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/inventions/robot-monster-inventions-coverflow.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "1024",
+                            "height": "1024"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/inventions/robot-monster-inventions-6.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "Robot wants nothing more than to be recognized as the world's greatest inventor, even if his creations don't always function as planned... Flip through this collection of concoctions!",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "datePosted": "2012-10-05T17:46:17.000+0000"
+        },
+        {
+            "id": "e6397624-2b50-4607-835a-ea649a5d4749",
+            "urlKey": "robot-and-monster-makin-bacon-pictures",
+            "type": "photoAlbum",
+            "title": "Robot & Monster: Makin' Bacon",
+            "shortTitle": "Makin' Bacon",
+            "photoCount": 10,
+            "images": [
+                {
+                    "type": "Thumbnail",
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/makin-bacon/thumb11.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "1024",
+                            "height": "1024"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/makin-bacon/thumb169.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/makin-bacon/thumb43.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "Makin' Bacon is THE place to get a great plate o' bacon, but Robot and Monster enjoy this salty snack just about everywhere they go. Satisfy your appetite with these pork-filled pics!",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "datePosted": "2012-10-04T20:21:37.000+0000"
+        },
+        {
+            "id": "409607fe-3751-4566-b6f2-4a3494631aa6",
+            "urlKey": "robot-and-monster-marf-moments-pictures",
+            "type": "photoAlbum",
+            "title": "Robot & Monster: Moments With Marf",
+            "shortTitle": "Moments With Marf",
+            "photoCount": 10,
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/marf-moments/thumb16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/marf-moments/thumb4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/shows/images/robot-and-monster/pictures/marf-moments/thumb1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "1024",
+                            "height": "1024"
+                        }
+                    ]
+                }
+            ],
+            "description": "Whether he's misbehaving or just sitting around being Marf, Robot and Monster can't help but love this lil guy. Check out these pics of the best pet rock a mechanical/organic can have!",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "datePosted": "2012-10-04T19:06:40.000+0000"
+        }
     ],
     "rating": "TV-Y7",
-    "season": "1",
-    "episodeNumber": "101",
-    "expirationDate": "",
-    "playlistId": "d80d69ac-9b17-11e1-a549-0026b9414f30"
+    "episodeNumber": "118",
+    "playlistId": "e78c61a2-0940-11e2-8969-0026b9414f30"
 }
 
 --
