@@ -10,6 +10,36 @@ Any feed / field marked as WIP subject to change.
 ---
 
 --
+Configuration
+    Global configuration for this application.
+
+##Query Parameters
+
+-   **apiKey** - unique apiKey for this application
+
+##Response
+List of key/value pairs specific to this application
+
+-   **baseImageUrl** - base url for any image assets
+-   **gameUrlTemplate** - url template for flash games
+-   **mediaGenUrlTemplate** - url template for media gen feed
+-   **starsFeedUrlKey** - url key to use for stars feed
+-   **pollSubmissionUrlTemplate** - url template to submit poll
+
+--
+
+GET /configuration
+< 200
+< Content-Type: application/json
+{
+    "baseImageUrl": "http://nick.mtvnimages.com",
+    "gameUrlTemplate": "http://www.nick.com/games/nickapp/{urlKey}.html",
+    "mediaGenUrlTemplate": "http://www.nick.com/dynamo/video/data/mediaGen.jhtml?mgid=mgid:cms:video:nick.com:{legacyId}&block=true&type=network&videoId={videoId}&acceptMethods=phttp",
+    "starsFeedUrl": "win8-star-feed",
+    "pollSubmissionUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/entries.json"
+}
+
+--
 Content Collection   
 
 (e.g. Followed Content, Timeline Content, All Miranda Videos, SpongeBob)
@@ -3787,34 +3817,6 @@ GET /poll?urlKey=sample-ios-poll
     ]        
 }
 
---
-Configuration
-
-##Query Parameters
-
--   **apiKey** - unique apiKey for this application
-
-##Response
-List of key/value pairs specific to this application
-
--   **baseImageUrl** - base url for any image assets
--   **gameUrlTemplate** - url template for flash games
--   **mediaGenUrlTemplate** - url template for media gen feed
--   **starsFeedUrlKey** - url key to use for stars feed
--   **pollSubmissionUrlTemplate** - url template to submit poll
-
---
-
-GET /configuration
-< 200
-< Content-Type: application/json
-{
-    "baseImageUrl": "http://nick.mtvnimages.com",
-    "gameUrlTemplate": "http://www.nick.com/games/nickapp/{urlKey}.html",
-    "mediaGenUrlTemplate": "http://www.nick.com/dynamo/video/data/mediaGen.jhtml?mgid=mgid:cms:video:nick.com:{legacyId}&block=true&type=network&videoId={videoId}&acceptMethods=phttp",
-    "starsFeedUrl": "win8-star-feed",
-    "pollSubmissionUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/entries.json"
-}
 
 --
 Game Types
