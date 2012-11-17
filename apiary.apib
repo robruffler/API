@@ -21,10 +21,11 @@ Global configuration for this application.
 List of key/value pairs specific to this application
 
 -   **baseImageUrl** - base url for any image assets
+-   **pollTallyUrlTemplate** - url template to retrieve poll results
+-   **pollSubmissionUrlTemplate** - url template to submit poll
+-   **starsFeedUrlKey** - url key to use for stars feed
 -   **gameUrlTemplate** - url template for flash games
 -   **mediaGenUrlTemplate** - url template for media gen feed
--   **starsFeedUrlKey** - url key to use for stars feed
--   **pollSubmissionUrlTemplate** - url template to submit poll
 
 --
 
@@ -32,11 +33,13 @@ GET /configuration
 < 200
 < Content-Type: application/json
 {
+    "homePageUrlKey": "ios-ipad-home-grid",
     "baseImageUrl": "http://nick.mtvnimages.com",
+    "pollTallyUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/tallies.json",
+    "pollSubmissionUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/entries.json",
+    "starsFeedUrlKey": "ios-star-feed",
     "gameUrlTemplate": "http://www.nick.com/games/nickapp/{urlKey}.html",
-    "mediaGenUrlTemplate": "http://www.nick.com/dynamo/video/data/mediaGen.jhtml?mgid=mgid:cms:video:nick.com:{legacyId}&block=true&type=network&videoId={videoId}&acceptMethods=phttp",
-    "starsFeedUrl": "win8-star-feed",
-    "pollSubmissionUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/entries.json"
+    "mediaGenUrlTemplate": "http://www.nick.com/dynamo/video/data/mediaGenProxy.jhtml?mgid=mgid:arc:video:nick.com:{videoId}"        
 }
 
 --
