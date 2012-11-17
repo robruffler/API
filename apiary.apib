@@ -1628,969 +1628,6 @@ GET /twitter/tweets?people=kendall-schmidt,jennette-mccurdy
 
 
 --
-Notification: Broadcast
-
-##Query Parameters  
-
--   **rows** - number of rows to return per page, default is 50, max is 200
--   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
-
-##Response
-- **meta** - information about the response
-
-    - **status** - indicates if request completed successfully 
-    - **count** - number of results in this response 
-    - **totalCount** - total number of results for this query
-  
-- **results** - results of this query
-
-    -   **id** - unique identifier for this item
-    -   **urlKey** - unique within content type, used to request detailed info for this item
-    -   **type** - content type for this item (e.g. video)
-    -   **title** - title of this item
-    -   **shortTitle** - short title of this item
---
-GET /notification-broadcast
-< 200
-< Content-Type: application/json
-{
-    "meta": {
-        "start": 0,
-        "count": 3,
-        "totalCount": 3,
-        "status": "SUCCESS"
-    },
-    "results": [
-        {
-            "id": "16f758ea-351e-4e2f-8c7b-d6361665766b",
-            "urlKey": "16f758ea-351e-4e2f-8c7b-d6361665766b",
-            "type": "broadcast-msg",
-            "title": "Tune in to the World Wide Day of Play tomorrow!!",
-            "shortTitle": "Tune in to the World Wide Day of Play tomorrow!!"
-        },
-        {
-            "id": "95787335-d78f-4465-bebb-5d554adf7da7",
-            "urlKey": "95787335-d78f-4465-bebb-5d554adf7da7",
-            "type": "broadcast-msg",
-            "title": "Kids pick the President",
-            "shortTitle": "Kids pick the President"
-        },
-        {
-            "id": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
-            "urlKey": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
-            "type": "broadcast-msg",
-            "title": "Did you know?",
-            "shortTitle": "Did you know?"
-        }
-    ]
-}
-
-
---
-Notification: Talent Alert
-
-##Query Parameters  
-
--   **people** - comma delimited list of person url keys  
--   **series** - comma delimited list of series url keys
--   **rows** - number of rows to return per page, default is 50, max is 200
--   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
-
-##Response
-- **meta** - information about the response
-
-    - **status** - indicates if request completed successfully 
-    - **count** - number of results in this response 
-    - **totalCount** - total number of results for this query
-  
-- **results** - results of this query
-
-    -   **id** - unique identifier for this item
-    -   **urlKey** - unique within content type, used to request detailed info for this item
-    -   **type** - content type for this item (e.g. video)
-    -   **title** - title of this item
-    -   **shortTitle** - short title of this item
-    -   **people** - list or url keys for the people associated to this item
---
-GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice
-< 200
-< Content-Type: application/json
-{
-    "meta": {
-        "start": 0,
-        "count": 2,
-        "totalCount": 2,
-        "status": "SUCCESS"
-    },
-    "results": [
-        {
-            "id": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
-            "urlKey": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
-            "type": "talent-alert",
-            "title": "Flying through California",
-            "shortTitle": "Flying through California",
-            "people": [
-                "miranda-cosgrove"
-            ]
-        },
-        {
-            "id": "b01486a4-113b-4458-aea2-934c19734a3a",
-            "urlKey": "b01486a4-113b-4458-aea2-934c19734a3a",
-            "type": "talent-alert",
-            "title": "Check out my new music video",
-            "shortTitle": "Check out my new music video",
-            "people": [
-                "victoria-justice"
-            ]
-        }
-    ]
-}
-
-
---
-New Episodes
-  list of new episodes (Original Air Date <= 7 days)
-
-##Query Parameters
--   **series** - comma delimited list of series url keys
--   **rows** - number of rows to return per page, default is 50, max is 200
--   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
-
-##Response
-- **meta** - information about the response
-
-    - **status** - indicates if request completed successfully 
-    - **count** - number of results in this response 
-    - **totalCount** - total number of results for this query
-  
-- **results** - results of this query
-
-    -   **id** - unique identifier for this item
-    -   **urlKey** - unique within content type, used to request detailed info for this item
-    -   **type** - content type for this item (e.g. video)
-    -   **title** - title of this item
-    -   **shortTitle** - short title of this item
-    -   **images** - list of images for this item
-        -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
-        -   **assets** - list of assets for this image in varying aspect ratios
-            -   **path** - path to this image
-            -   **aspectRatio** - aspect ratio of this image
-            -   **width** - width of this image in pixels
-            -   **height** - height of this image in pixels
-    -   **seriesUrlKey** - url key for the series this item is related to
-    -   **seriesTitle** - title of the series this item is related to
-    -   **datePosted** - date that this item was posted
-    -   **duration** - duration of this item
-    -   **rating** - rating of this episode
-    -   **episodeNumber** - episode number for this episode 
---
-
-
-GET /new-episodes?series=hs-spongebob,ninja-turtles,robotmonster,legend-of-korra,hs-pr-samurai,hs-winx-club,kung-fu-panda-legends-of-awesomeness
-< 200
-< Content-Type: application/json
-{
-    "meta": {
-        "start": 0,
-        "count": 2,
-        "totalCount": 2,
-        "status": "SUCCESS"
-    },
-    "results": [
-        {
-            "id": "bf193360-92cd-431a-8f5c-1b1155eeac17",
-            "urlKey": "robot-and-monster-116-full-episode",
-            "type": "episode",
-            "title": "Robot & Monster: \"The Party & First Impressions\"",
-            "shortTitle": "The Party & First Impressions",
-            "images": [
-                {
-                    "assets": [
-                        {
-                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-16x9.jpg",
-                            "aspectRatio": "16x9",
-                            "width": "1024",
-                            "height": "576"
-                        },
-                        {
-                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-1x1.jpg",
-                            "aspectRatio": "1x1",
-                            "width": "698",
-                            "height": "698"
-                        },
-                        {
-                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-4x3.jpg",
-                            "aspectRatio": "4x3",
-                            "width": "1024",
-                            "height": "768"
-                        }
-                    ]
-                }
-            ],
-            "description": "Robot showcases a new invention to his family. Monster helps Robot become an apprentice.",
-            "seriesUrlKey": "robotmonster",
-            "seriesTitle": "Robot & Monster",
-            "duration": "30:00",
-            "datePosted": "2012-09-24T14:31:32.000+0000",
-            "rating": "TV-Y7",
-            "episodeNumber": "116"
-        },
-        {
-            "id": "209c6082-79ce-49c6-a6f4-cb1293895573",
-            "urlKey": "robot-and-monster-114-full-episode",
-            "type": "episode",
-            "title": "Robot & Monster: \"Apartment 3 1/2 & Don't Walk\"",
-            "shortTitle": "Apartment 3 1/2 & Don't Walk",
-            "images": [
-                {
-                    "assets": [
-                        {
-                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-4x3.jpg",
-                            "aspectRatio": "4x3",
-                            "width": "1024",
-                            "height": "768"
-                        },
-                        {
-                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-1x1.jpg",
-                            "aspectRatio": "1x1",
-                            "width": "696",
-                            "height": "696"
-                        },
-                        {
-                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-16x9.jpg",
-                            "aspectRatio": "16x9",
-                            "width": "1280",
-                            "height": "720"
-                        }
-                    ]
-                }
-            ],
-            "description": "Monster makes an imaginary friend and loses his walking license.",
-            "seriesUrlKey": "robotmonster",
-            "seriesTitle": "Robot & Monster",
-            "duration": "30:00",
-            "datePosted": "2012-09-07T19:15:26.000+0000",
-            "rating": "TV-Y7",
-            "episodeNumber": "114"
-        }
-    ]
-}
-
-
---
-Stars (Deprecated)
-  use Categories instead
-
-##Query Parameters
-
--   **urlKey** - url key of star list
-
-##Response
-
--   **id** - unique identifier for this star
--   **urlKey** - unique identifier for this star
--   **type** - (person|series) disambiguation between items that represent stars vs series
--   **title** - name of this star
--   **description** - description of this star
--   **images** - list of images for this item
-    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
-    -   **assets** - list of assets for this image in varying aspect ratios
-        -   **path** - path to this image
-        -   **aspectRatio** - aspect ratio of this image
-        -   **width** - width of this image in pixels
-        -   **height** - height of this image in pixels
--   **seriesUrlKey** - url key for the series this item is related to
--   **seriesTitle** - title of the series this item is related to
--   **theme**
-    -   **accent-color-1** - accent color for this star
-    -   **theme-background** - background image for this star
-        -   **assets** - list of assets for this image in varying aspect ratios
-            -   **path** - path to this image
-            -   **aspectRatio** - aspect ratio of this image
-            -   **width** - width of this image in pixels
-            -   **height** - height of this image in pixels
--   **options**
-    -   **hasGames** - flag indicating if this star/series has games available (defaults to true if unset)
---
-
-GET /stars?urlKey=win8-star-feed
-< 200
-< Content-Type: application/json
-[
-    {
-        "id": "cba6b7aa-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-spongebob",
-        "type": "series",
-        "title": "SpongeBob",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-spongebob.png",
-                        "width": "408",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-spongebob.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From SpongeBob Squarepants",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-blue.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#34b3cb"
-        }
-    },
-    {
-        "id": "f1d56f00-57b6-11e1-9c48-0026b9414f30",
-        "urlKey": "miranda-cosgrove",
-        "type": "Person",
-        "title": "Miranda Cosgrove",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-miranda.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-miranda.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From iCarly",
-        "seriesUrlKey": "hs-icarly",
-        "seriesTitle": "iCarly",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-pink.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#e54096"
-        }
-    },
-    {
-        "id": "c7740134-1ad7-11e1-aca6-0026b9414f30",
-        "urlKey": "ninja-turtles",
-        "type": "series",
-        "title": "Leonardo",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-leonardo.png",
-                        "width": "384",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-leonardo.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Teenage Mutant Ninja Turtles",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-green.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#00653a"
-        }
-    },
-    {
-        "id": "f1d574c8-57b6-11e1-9c48-0026b9414f30",
-        "urlKey": "victoria-justice",
-        "type": "Person",
-        "title": "Victoria Justice",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-victoria.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-victoria.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Victorious",
-        "seriesUrlKey": "hs-victorious",
-        "seriesTitle": "Victorious",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-purple.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#7f3f98"
-        }
-    },
-    {
-        "id": "f1d57d60-57b6-11e1-9c48-0026b9414f30",
-        "urlKey": "kendall-schmidt",
-        "type": "Person",
-        "title": "Kendall Schmidt",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-kendall.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-kendall.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Big Time Rush",
-        "seriesUrlKey": "hs-bigtimerush",
-        "seriesTitle": "Big Time Rush",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#d22641"
-        }
-    },
-    {
-        "id": "f1d57a4a-57b6-11e1-9c48-0026b9414f30",
-        "urlKey": "james-maslow",
-        "type": "Person",
-        "title": "James Maslow",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-james.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-james.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Big Time Rush",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#d22641"
-        }
-    },
-    {
-        "id": "f1d5804e-57b6-11e1-9c48-0026b9414f30",
-        "urlKey": "logan-henderson",
-        "type": "Person",
-        "title": "Logan Henderson",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-logan.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-logan.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Big Time Rush",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#d22641"
-        }
-    },
-    {
-        "id": "f1d57784-57b6-11e1-9c48-0026b9414f30",
-        "urlKey": "carlos-pena",
-        "type": "Person",
-        "title": "Carlos Pena",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-carlos.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-carlos.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Big Time Rush",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#d22641"
-        }
-    },
-    {
-        "id": "9a5419c5-f28b-45d2-a042-770024dd74f6",
-        "urlKey": "robotmonster",
-        "type": "series",
-        "title": "Monster",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-monster.png",
-                        "width": "337",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-monster.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Robot & Monster",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-purple.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#472f91"
-        }
-    },
-    {
-        "id": "6ab9f64e-9b0e-11e1-a549-0026b9414f30",
-        "urlKey": "cymphonique-miller",
-        "type": "Person",
-        "title": "Cymphonique Miller",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-cymphonique.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-cymphonique.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From How To Rock",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-blue.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#0081c6"
-        }
-    },
-    {
-        "id": "70d13aa7-a589-4c19-8ed5-f4cfa84b65af",
-        "urlKey": "legend-of-korra",
-        "type": "series",
-        "title": "Korra",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-korra.png",
-                        "width": "405",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-korra.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "From Legend of Korra",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    },
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-teal.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#37939b"
-        }
-    },
-    {
-        "id": "cb81db06-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-pr-samurai",
-        "type": "series",
-        "title": "The Red Ranger",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-red-ranger.png",
-                        "width": "350",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-red-ranger.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "from Power Rangers: Super Samurai",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#b7111b"
-        }
-    },
-    {
-        "id": "cb773e58-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-winx-club",
-        "type": "series",
-        "title": "Bloom",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-bloom.png",
-                        "width": "411",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-bloom.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "from Winx Club",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-pink.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#d40078"
-        },
-        "options": {
-            "hasGames": "false"
-        }
-    },
-    {
-        "id": "23e4ccea-cda9-11e0-aca6-0026b9414f30",
-        "urlKey": "kung-fu-panda-legends-of-awesomeness",
-        "type": "series",
-        "title": "Po",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-po.png",
-                        "width": "370",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-po.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "from Kung Fu Panda: Legends of Awesomeness",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#c41230"
-        }
-    },
-    {
-        "id": "fdb6b108-e32f-11e1-a549-0026b9414f30",
-        "urlKey": "noah-crawford",
-        "type": "Person",
-        "title": "Noah Crawford",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-noah.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-noah.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "from How to Rock and You Gotta See This!",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-grey.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#ff8400"
-        }
-    },
-    {
-        "id": "561cd3ca-e32d-11e1-a549-0026b9414f30",
-        "urlKey": "chris-oneal",
-        "type": "Person",
-        "title": "Chris O'Neal",
-        "images": [
-            {
-                "type": "FullBody",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-carousel/star-chris.png",
-                        "width": "300",
-                        "height": "640"
-                    }
-                ]
-            },
-            {
-                "type": "Thumbnail",
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/star-box/star-box-chris.jpg",
-                        "width": "400",
-                        "height": "225"
-                    }
-                ]
-            }
-        ],
-        "description": "from How To Rock and You Gotta See This!",
-        "theme": {
-            "ThemeBackground": {
-                "assets": [
-                    {
-                        "path": "/nick/app/win8/stars/backgrounds/background-grey.jpg",
-                        "width": "1366",
-                        "height": "768"
-                    }
-                ]
-            },
-            "AccentColor1": "#ff8400"
-        }
-    }
-]
-
-
---
 Video
 
 ##Query Parameters
@@ -3573,64 +2610,965 @@ GET /poll?urlKey=sample-ios-poll
 
 
 --
-Game Types
+Notification: Broadcast
+
+##Query Parameters  
+
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+--
+GET /notification-broadcast
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 3,
+        "totalCount": 3,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "16f758ea-351e-4e2f-8c7b-d6361665766b",
+            "urlKey": "16f758ea-351e-4e2f-8c7b-d6361665766b",
+            "type": "broadcast-msg",
+            "title": "Tune in to the World Wide Day of Play tomorrow!!",
+            "shortTitle": "Tune in to the World Wide Day of Play tomorrow!!"
+        },
+        {
+            "id": "95787335-d78f-4465-bebb-5d554adf7da7",
+            "urlKey": "95787335-d78f-4465-bebb-5d554adf7da7",
+            "type": "broadcast-msg",
+            "title": "Kids pick the President",
+            "shortTitle": "Kids pick the President"
+        },
+        {
+            "id": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
+            "urlKey": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
+            "type": "broadcast-msg",
+            "title": "Did you know?",
+            "shortTitle": "Did you know?"
+        }
+    ]
+}
+
 
 --
+Notification: Talent Alert
 
-GET /gameTypes
+##Query Parameters  
+
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **people** - list or url keys for the people associated to this item
+--
+GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 2,
+        "totalCount": 2,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
+            "urlKey": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
+            "type": "talent-alert",
+            "title": "Flying through California",
+            "shortTitle": "Flying through California",
+            "people": [
+                "miranda-cosgrove"
+            ]
+        },
+        {
+            "id": "b01486a4-113b-4458-aea2-934c19734a3a",
+            "urlKey": "b01486a4-113b-4458-aea2-934c19734a3a",
+            "type": "talent-alert",
+            "title": "Check out my new music video",
+            "shortTitle": "Check out my new music video",
+            "people": [
+                "victoria-justice"
+            ]
+        }
+    ]
+}
+
+
+--
+New Episodes
+  list of new episodes (Original Air Date <= 7 days)
+
+##Query Parameters
+-   **series** - comma delimited list of series url keys
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **images** - list of images for this item
+        -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+    -   **seriesUrlKey** - url key for the series this item is related to
+    -   **seriesTitle** - title of the series this item is related to
+    -   **datePosted** - date that this item was posted
+    -   **duration** - duration of this item
+    -   **rating** - rating of this episode
+    -   **episodeNumber** - episode number for this episode 
+--
+
+
+GET /new-episodes?series=hs-spongebob,ninja-turtles,robotmonster,legend-of-korra,hs-pr-samurai,hs-winx-club,kung-fu-panda-legends-of-awesomeness
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 2,
+        "totalCount": 2,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "bf193360-92cd-431a-8f5c-1b1155eeac17",
+            "urlKey": "robot-and-monster-116-full-episode",
+            "type": "episode",
+            "title": "Robot & Monster: \"The Party & First Impressions\"",
+            "shortTitle": "The Party & First Impressions",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "698",
+                            "height": "698"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-116-full-episode-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "Robot showcases a new invention to his family. Monster helps Robot become an apprentice.",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "duration": "30:00",
+            "datePosted": "2012-09-24T14:31:32.000+0000",
+            "rating": "TV-Y7",
+            "episodeNumber": "116"
+        },
+        {
+            "id": "209c6082-79ce-49c6-a6f4-cb1293895573",
+            "urlKey": "robot-and-monster-114-full-episode",
+            "type": "episode",
+            "title": "Robot & Monster: \"Apartment 3 1/2 & Don't Walk\"",
+            "shortTitle": "Apartment 3 1/2 & Don't Walk",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        },
+                        {
+                            "path": "/nick/video/images/robot-and-monster/robot-and-monster-apartment-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        }
+                    ]
+                }
+            ],
+            "description": "Monster makes an imaginary friend and loses his walking license.",
+            "seriesUrlKey": "robotmonster",
+            "seriesTitle": "Robot & Monster",
+            "duration": "30:00",
+            "datePosted": "2012-09-07T19:15:26.000+0000",
+            "rating": "TV-Y7",
+            "episodeNumber": "114"
+        }
+    ]
+}
+
+
+--
+Stars (Deprecated)
+  use Categories instead
+
+##Query Parameters
+
+-   **urlKey** - url key of star list
+
+##Response
+
+-   **id** - unique identifier for this star
+-   **urlKey** - unique identifier for this star
+-   **type** - (person|series) disambiguation between items that represent stars vs series
+-   **title** - name of this star
+-   **description** - description of this star
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **theme**
+    -   **accent-color-1** - accent color for this star
+    -   **theme-background** - background image for this star
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels
+-   **options**
+    -   **hasGames** - flag indicating if this star/series has games available (defaults to true if unset)
+--
+
+GET /stars?urlKey=win8-star-feed
 < 200
 < Content-Type: application/json
 [
-"Fitness",
-"Console",
-"Third-Person",
-"Turn-Based",
-"Extreme",
-"Trivia",
-"All",
-"Fighter",
-"Pinball",
-"Strategy",
-"3-D",
-"Stealth",
-"Puzzle",
-"Kids",
-"First-Person",
-"Sci-Fi",
-"Role Playing",
-"Action",
-"Card-Based",
-"Rhythm",
-"Movie-Based",
-"Party",
-"Skill",
-"RPG",
-"Side-Scroller",
-"Simulator",
-"Adult",
-"Graphic Novel",
-"Adventure",
-"Music",
-"Dance",
-"Arcade",
-"Flight",
-"Sports",
-"Racing",
-"Educational",
-"Platformer",
-"Episodic",
-"Shooter",
-"Survival Horror",
-"Real-Time",
-"2-D",
-"MMO",
-"Family",
-"3D",
-"Action",
-"Adventure",
-"Card",
-"ClubHouses",
-"ClubCinema"
+    {
+        "id": "cba6b7aa-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-spongebob",
+        "type": "series",
+        "title": "SpongeBob",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-spongebob.png",
+                        "width": "408",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-spongebob.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From SpongeBob Squarepants",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-blue.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#34b3cb"
+        }
+    },
+    {
+        "id": "f1d56f00-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "miranda-cosgrove",
+        "type": "Person",
+        "title": "Miranda Cosgrove",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-miranda.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-miranda.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From iCarly",
+        "seriesUrlKey": "hs-icarly",
+        "seriesTitle": "iCarly",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-pink.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#e54096"
+        }
+    },
+    {
+        "id": "c7740134-1ad7-11e1-aca6-0026b9414f30",
+        "urlKey": "ninja-turtles",
+        "type": "series",
+        "title": "Leonardo",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-leonardo.png",
+                        "width": "384",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-leonardo.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Teenage Mutant Ninja Turtles",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-green.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#00653a"
+        }
+    },
+    {
+        "id": "f1d574c8-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "victoria-justice",
+        "type": "Person",
+        "title": "Victoria Justice",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-victoria.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-victoria.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Victorious",
+        "seriesUrlKey": "hs-victorious",
+        "seriesTitle": "Victorious",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-purple.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#7f3f98"
+        }
+    },
+    {
+        "id": "f1d57d60-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "kendall-schmidt",
+        "type": "Person",
+        "title": "Kendall Schmidt",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-kendall.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-kendall.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "seriesUrlKey": "hs-bigtimerush",
+        "seriesTitle": "Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "f1d57a4a-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "james-maslow",
+        "type": "Person",
+        "title": "James Maslow",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-james.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-james.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "f1d5804e-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "logan-henderson",
+        "type": "Person",
+        "title": "Logan Henderson",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-logan.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-logan.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "f1d57784-57b6-11e1-9c48-0026b9414f30",
+        "urlKey": "carlos-pena",
+        "type": "Person",
+        "title": "Carlos Pena",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-carlos.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-carlos.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Big Time Rush",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d22641"
+        }
+    },
+    {
+        "id": "9a5419c5-f28b-45d2-a042-770024dd74f6",
+        "urlKey": "robotmonster",
+        "type": "series",
+        "title": "Monster",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-monster.png",
+                        "width": "337",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-monster.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Robot & Monster",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-purple.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#472f91"
+        }
+    },
+    {
+        "id": "6ab9f64e-9b0e-11e1-a549-0026b9414f30",
+        "urlKey": "cymphonique-miller",
+        "type": "Person",
+        "title": "Cymphonique Miller",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-cymphonique.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-cymphonique.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From How To Rock",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-blue.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#0081c6"
+        }
+    },
+    {
+        "id": "70d13aa7-a589-4c19-8ed5-f4cfa84b65af",
+        "urlKey": "legend-of-korra",
+        "type": "series",
+        "title": "Korra",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-korra.png",
+                        "width": "405",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-korra.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "From Legend of Korra",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    },
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-teal.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#37939b"
+        }
+    },
+    {
+        "id": "cb81db06-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-pr-samurai",
+        "type": "series",
+        "title": "The Red Ranger",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-red-ranger.png",
+                        "width": "350",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-red-ranger.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from Power Rangers: Super Samurai",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#b7111b"
+        }
+    },
+    {
+        "id": "cb773e58-7a92-11e0-8fe5-0026b9414f30",
+        "urlKey": "hs-winx-club",
+        "type": "series",
+        "title": "Bloom",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-bloom.png",
+                        "width": "411",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-bloom.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from Winx Club",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-pink.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#d40078"
+        },
+        "options": {
+            "hasGames": "false"
+        }
+    },
+    {
+        "id": "23e4ccea-cda9-11e0-aca6-0026b9414f30",
+        "urlKey": "kung-fu-panda-legends-of-awesomeness",
+        "type": "series",
+        "title": "Po",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-po.png",
+                        "width": "370",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-po.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from Kung Fu Panda: Legends of Awesomeness",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-red.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#c41230"
+        }
+    },
+    {
+        "id": "fdb6b108-e32f-11e1-a549-0026b9414f30",
+        "urlKey": "noah-crawford",
+        "type": "Person",
+        "title": "Noah Crawford",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-noah.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-noah.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from How to Rock and You Gotta See This!",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-grey.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#ff8400"
+        }
+    },
+    {
+        "id": "561cd3ca-e32d-11e1-a549-0026b9414f30",
+        "urlKey": "chris-oneal",
+        "type": "Person",
+        "title": "Chris O'Neal",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-carousel/star-chris.png",
+                        "width": "300",
+                        "height": "640"
+                    }
+                ]
+            },
+            {
+                "type": "Thumbnail",
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/star-box/star-box-chris.jpg",
+                        "width": "400",
+                        "height": "225"
+                    }
+                ]
+            }
+        ],
+        "description": "from How To Rock and You Gotta See This!",
+        "theme": {
+            "ThemeBackground": {
+                "assets": [
+                    {
+                        "path": "/nick/app/win8/stars/backgrounds/background-grey.jpg",
+                        "width": "1366",
+                        "height": "768"
+                    }
+                ]
+            },
+            "AccentColor1": "#ff8400"
+        }
+    }
 ]
 
 
@@ -3892,4 +3830,66 @@ GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-u
         "urlKey": "ios-app-terms-of-use",
         "dateModified", "2012-08-30 05:12 PM"
     }
+]
+
+
+--
+Game Types
+
+--
+
+GET /gameTypes
+< 200
+< Content-Type: application/json
+[
+"Fitness",
+"Console",
+"Third-Person",
+"Turn-Based",
+"Extreme",
+"Trivia",
+"All",
+"Fighter",
+"Pinball",
+"Strategy",
+"3-D",
+"Stealth",
+"Puzzle",
+"Kids",
+"First-Person",
+"Sci-Fi",
+"Role Playing",
+"Action",
+"Card-Based",
+"Rhythm",
+"Movie-Based",
+"Party",
+"Skill",
+"RPG",
+"Side-Scroller",
+"Simulator",
+"Adult",
+"Graphic Novel",
+"Adventure",
+"Music",
+"Dance",
+"Arcade",
+"Flight",
+"Sports",
+"Racing",
+"Educational",
+"Platformer",
+"Episodic",
+"Shooter",
+"Survival Horror",
+"Real-Time",
+"2-D",
+"MMO",
+"Family",
+"3D",
+"Action",
+"Adventure",
+"Card",
+"ClubHouses",
+"ClubCinema"
 ]
