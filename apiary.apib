@@ -1698,6 +1698,70 @@ GET /video?id=1a197042-7a9a-11e0-8fe5-0026b9414f30
     "rating": "TV-Y7"
 }
 
+
+--
+Playlist
+
+##Query Parameters
+
+-   **id** - id of the item to request
+-   **urlKey** - urlKey of the item to request
+
+##Response
+  
+-   **id** - unique identifier for this item
+-   **urlKey** - unique within content type, used to request detailed info for this item
+-   **title** - title of this item
+-   **shortTitle** - short title of this item
+-   **description** - description of this item
+-   **images** - list of images for this item
+    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+    -   **assets** - list of assets for this image in varying aspect ratios
+        -   **path** - path to this image
+        -   **aspectRatio** - aspect ratio of this image
+        -   **width** - width of this image in pixels
+        -   **height** - height of this image in pixels
+-   **datePosted** - date that this item was posted
+-   **seriesUrlKey** - url key for the series this item is related to
+-   **seriesTitle** - title of the series this item is related to
+-   **people** - list or url keys for the people associated to this item
+-   **duration** - duration of this item (for video types only)
+-   **playlistType** - (*unset*|full episode (segmented)|editorial|episode highlights|full episode (unsegmented)|video collection) descriptive type for this playlist
+-   **rating** - rating for this video content
+--
+
+GET /playlist?id=ec62c2a8-e4b9-4956-8061-d21ec54f4595
+< 200
+< Content-Type: application/json
+{ 
+    "id": "ec62c2a8-e4b9-4956-8061-d21ec54f4595",
+    "urlKey": "spongebob-all-songs-mega-playlist",
+    "title": "SpongeBob SquarePants: All Songs Mega Playlist!",
+    "shortTitle": "All Songs Mega Playlist!",
+    "description": "You will literally not be able to handle all of this music. Seriously.",
+    "images": [
+        {
+            "assets": [
+                {
+                    "path": "/nick-assets/video/images/spongebob-squarepants/campfire-song.jpg",
+                    "aspectRatio": "16x9",
+                    "width": "640",   
+                    "height": "360"                             
+                }                                
+            ]
+        }
+    ],
+    "datePosted": "",
+    "seriesUrlKey": "hs-spongebob",
+    "seriesTitle": "SpongeBob SquarePants",            
+    "people": [
+    ],
+    "duration": "0:00",
+    "playlistType": "editorial",
+    "rating": "TV-Y7"
+}
+
+
 --
 Episode
 
@@ -1963,67 +2027,6 @@ GET /episode?id=bdaa2191-5b78-4dc3-8fca-86264c9b3942
     "playlistId": "e78c61a2-0940-11e2-8969-0026b9414f30"
 }
 
---
-Playlist
-
-##Query Parameters
-
--   **id** - id of the item to request
--   **urlKey** - urlKey of the item to request
-
-##Response
-  
--   **id** - unique identifier for this item
--   **urlKey** - unique within content type, used to request detailed info for this item
--   **title** - title of this item
--   **shortTitle** - short title of this item
--   **description** - description of this item
--   **images** - list of images for this item
-    -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
-    -   **assets** - list of assets for this image in varying aspect ratios
-        -   **path** - path to this image
-        -   **aspectRatio** - aspect ratio of this image
-        -   **width** - width of this image in pixels
-        -   **height** - height of this image in pixels
--   **datePosted** - date that this item was posted
--   **seriesUrlKey** - url key for the series this item is related to
--   **seriesTitle** - title of the series this item is related to
--   **people** - list or url keys for the people associated to this item
--   **duration** - duration of this item (for video types only)
--   **playlistType** - (*unset*|full episode (segmented)|editorial|episode highlights|full episode (unsegmented)|video collection) descriptive type for this playlist
--   **rating** - rating for this video content
---
-
-GET /playlist?id=ec62c2a8-e4b9-4956-8061-d21ec54f4595
-< 200
-< Content-Type: application/json
-{ 
-    "id": "ec62c2a8-e4b9-4956-8061-d21ec54f4595",
-    "urlKey": "spongebob-all-songs-mega-playlist",
-    "title": "SpongeBob SquarePants: All Songs Mega Playlist!",
-    "shortTitle": "All Songs Mega Playlist!",
-    "description": "You will literally not be able to handle all of this music. Seriously.",
-    "images": [
-        {
-            "assets": [
-                {
-                    "path": "/nick-assets/video/images/spongebob-squarepants/campfire-song.jpg",
-                    "aspectRatio": "16x9",
-                    "width": "640",   
-                    "height": "360"                             
-                }                                
-            ]
-        }
-    ],
-    "datePosted": "",
-    "seriesUrlKey": "hs-spongebob",
-    "seriesTitle": "SpongeBob SquarePants",            
-    "people": [
-    ],
-    "duration": "0:00",
-    "playlistType": "editorial",
-    "rating": "TV-Y7"
-}
 
 --
 Game
