@@ -1053,6 +1053,242 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
 
 
 --
+Editorial Content Collection  
+
+##Query Parameters
+
+-   **urlKey** - unique key identifying section of content
+
+##Response
+  
+- **zones** - list of promotable areas mapped by urlKey
+    - **urlKey** - unique identifier that maps to section of app containing promoted content
+    -  **promos** - promoted content items
+        - **title** - promotional title
+        -    **description** - promotional description
+        -    **shortDescription** - promotional short description
+        -    **copy** - promotional copy
+        -    **headerText** - promotional header text
+        -    **subHeaderText** - promotional subheader text
+        -    **url** - external url for this promo, used for webviews
+        -    **images** - promotional images
+            -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+            -   **assets** - list of assets for this image in varying aspect ratios
+                -   **path** - path to this image
+                -   **aspectRatio** - aspect ratio of this image
+                -   **width** - width of this image in pixels
+                -   **height** - height of this image in pixels
+        -    **items** - promoted items
+            - **id** - unique identifier for this item
+            -   **urlKey** - unique within content type, used to request detailed info for this item
+            -   **type** - content type for this item (e.g. video)
+            -   **title** - title of this item
+            -   **shortTitle** - short title of this item
+            -   **description** - description of this item
+            -   **images** - list of images for this item
+                -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
+                -   **assets** - list of assets for this image in varying aspect ratios
+            -   **datePosted** - date that this item was posted
+            -   **seriesUrlKey** - url key for the series this item is related to
+            -   **seriesTitle** - title of the series this item is related to
+            -   **people** - list or url keys for the people associated to this item
+            -   **duration** - duration of this item (for video only)
+            -   **url** - external url for this item (for external only)
+            -   **photoCount** - number of photos in this album (for photoAlbum only)
+--
+
+GET /editorial-content-collection?urlKey=win8-home-page
+< 200
+< Content-Type: application/json
+{
+    "zones": [
+        {
+            "urlKey" : "win8-home-zone",
+            "title": "Win8 Home Zone",
+            "promos" : [
+                {
+                    "title" : "Promo 1 Title",
+                    "description" : "Promo 1 Description",
+                    "shortDescription": "Promo 1 Short Description",
+                    "copy": "Promo 1 Copy",
+                    "headerText": "Promo 1 Header Text",
+                    "subHeaderText": "Promo 1 Subheader Text"                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ],
+                    "items" : [
+                        {
+                            "id": "dcc6922e-cc35-492a-9263-407cc7ffab55",
+                            "urlKey": "icarly-409-itoe-fat-cakes-bath-disaster-clip",
+                            "type": "video",
+                            "title": "iCarly: \"iToe Fat Cakes: Bath Disaster!\"",
+                            "shortTitle": "iToe Fat Cakes: Bath Disaster!",
+                            "description": "Carly sets the record for worst date in history when she gets her toe stuck in the bath faucet!",
+                            "images": [
+                                {
+                                    "type": "thumbnail",
+                                    "assets": [
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                            "aspectRatio": "16x9",
+                                            "width": "640",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
+                                            "aspectRatio": "4x3",
+                                            "width": "480",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
+                                            "aspectRatio": "1x1",
+                                            "width": "360",   
+                                            "height": "360"                             
+                                        }                                
+                                    ]
+                                }
+                            ],
+                            "datePosted": "2012-08-01T04:00:00.000+0000",
+                            "seriesUrlKey": "hs-icarly",
+                            "seriesTitle": "iCarly",            
+                            "people": [
+                                "miranda-cosgrove"
+                            ],
+                            "duration": "1:24",
+                            "videoType": "clip",
+                            "legacyId": "1073793"                            
+                        }                        
+                    ]
+                },
+                {
+                    "title": "Win8 Test Webtile Promo",
+                    "description": "Check out Teennick.com!",
+                    "shortDescription": "Check out Teennick.com!",
+                    "copy": "Check out Teennick.com!",
+                    "headerText": "Check out this Quiz!",
+                    "subHeaderText": "Promo 2 Subheader Text",                    
+                    "url": "http://www.teennick.com/quizzes/who-is-your-degrassi-girl-crush-quiz.html",                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ]
+                }                
+            ]
+        },
+        {
+            "urlKey" : "win8-live-tile-wide-zone",
+            "title": "Win8 Wide Live Tiles",
+            "promos" : [
+                {
+                    "title" : "Promo 1 Title",
+                    "description" : "Promo 1 Description",
+                    "shortDescription": "Promo 1 Short Description",
+                    "copy": "Promo 1 Copy",
+                    "headerText": "Promo 1 Header Text",
+                    "subHeaderText": "Promo 1 Subheader Text"                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ],
+                    "items" : [
+                        {
+                            "id": "dcc6922e-cc35-492a-9263-407cc7ffab55",
+                            "urlKey": "icarly-409-itoe-fat-cakes-bath-disaster-clip",
+                            "type": "video",
+                            "title": "iCarly: \"iToe Fat Cakes: Bath Disaster!\"",
+                            "shortTitle": "iToe Fat Cakes: Bath Disaster!",
+                            "description": "Carly sets the record for worst date in history when she gets her toe stuck in the bath faucet!",
+                            "images": [
+                                {
+                                    "type": "thumbnail",
+                                    "assets": [
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                            "aspectRatio": "16x9",
+                                            "width": "640",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
+                                            "aspectRatio": "4x3",
+                                            "width": "480",   
+                                            "height": "360"                             
+                                        },
+                                        {
+                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
+                                            "aspectRatio": "1x1",
+                                            "width": "360",   
+                                            "height": "360"                             
+                                        }                                
+                                    ]
+                                }
+                            ],
+                            "datePosted": "2012-08-01T04:00:00.000+0000",
+                            "seriesUrlKey": "hs-icarly",
+                            "seriesTitle": "iCarly",            
+                            "people": [
+                                "miranda-cosgrove"
+                            ],
+                            "duration": "1:24",
+                            "videoType": "clip",
+                            "legacyId": "1073793",                            
+                        }                        
+                    ]
+                },
+                {
+                    "title": "Win8 Test Webtile Promo",
+                    "description": "Check out Teennick.com!",
+                    "shortDescription": "Check out Teennick.com!",
+                    "copy": "Check out Teennick.com!",
+                    "headerText": "Check out this Quiz!",
+                    "subHeaderText": "Promo 2 Subheader Text",                    
+                    "url": "http://www.teennick.com/quizzes/who-is-your-degrassi-girl-crush-quiz.html",                    
+                    "images": [
+                        {
+                            "assets": [
+                                {
+                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                                    "aspectRatio": "16x9",
+                                    "width": "640",   
+                                    "height": "360"                             
+                                }                                
+                            ]
+                        }
+                    ]
+                }                
+            ]
+        }
+    ]
+}
+
+
+--
 Content Collection   
 
 (e.g. Followed Content, Timeline Content, All Miranda Videos, SpongeBob)
@@ -1612,240 +1848,6 @@ GET /twitter/tweets?people=kendall-schmidt,jennette-mccurdy
     ]
 }
 
---
-Editorial Content Collection  
-
-##Query Parameters
-
--   **urlKey** - unique key identifying section of content
-
-##Response
-  
-- **zones** - list of promotable areas mapped by urlKey
-    - **urlKey** - unique identifier that maps to section of app containing promoted content
-    -  **promos** - promoted content items
-        - **title** - promotional title
-        -    **description** - promotional description
-        -    **shortDescription** - promotional short description
-        -    **copy** - promotional copy
-        -    **headerText** - promotional header text
-        -    **subHeaderText** - promotional subheader text
-        -    **url** - external url for this promo, used for webviews
-        -    **images** - promotional images
-            -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
-            -   **assets** - list of assets for this image in varying aspect ratios
-                -   **path** - path to this image
-                -   **aspectRatio** - aspect ratio of this image
-                -   **width** - width of this image in pixels
-                -   **height** - height of this image in pixels
-        -    **items** - promoted items
-            - **id** - unique identifier for this item
-            -   **urlKey** - unique within content type, used to request detailed info for this item
-            -   **type** - content type for this item (e.g. video)
-            -   **title** - title of this item
-            -   **shortTitle** - short title of this item
-            -   **description** - description of this item
-            -   **images** - list of images for this item
-                -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
-                -   **assets** - list of assets for this image in varying aspect ratios
-            -   **datePosted** - date that this item was posted
-            -   **seriesUrlKey** - url key for the series this item is related to
-            -   **seriesTitle** - title of the series this item is related to
-            -   **people** - list or url keys for the people associated to this item
-            -   **duration** - duration of this item (for video only)
-            -   **url** - external url for this item (for external only)
-            -   **photoCount** - number of photos in this album (for photoAlbum only)
---
-
-GET /editorial-content-collection?urlKey=win8-home-page
-< 200
-< Content-Type: application/json
-{
-    "zones": [
-        {
-            "urlKey" : "win8-home-zone",
-            "title": "Win8 Home Zone",
-            "promos" : [
-                {
-                    "title" : "Promo 1 Title",
-                    "description" : "Promo 1 Description",
-                    "shortDescription": "Promo 1 Short Description",
-                    "copy": "Promo 1 Copy",
-                    "headerText": "Promo 1 Header Text",
-                    "subHeaderText": "Promo 1 Subheader Text"                    
-                    "images": [
-                        {
-                            "assets": [
-                                {
-                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
-                                    "aspectRatio": "16x9",
-                                    "width": "640",   
-                                    "height": "360"                             
-                                }                                
-                            ]
-                        }
-                    ],
-                    "items" : [
-                        {
-                            "id": "dcc6922e-cc35-492a-9263-407cc7ffab55",
-                            "urlKey": "icarly-409-itoe-fat-cakes-bath-disaster-clip",
-                            "type": "video",
-                            "title": "iCarly: \"iToe Fat Cakes: Bath Disaster!\"",
-                            "shortTitle": "iToe Fat Cakes: Bath Disaster!",
-                            "description": "Carly sets the record for worst date in history when she gets her toe stuck in the bath faucet!",
-                            "images": [
-                                {
-                                    "type": "thumbnail",
-                                    "assets": [
-                                        {
-                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
-                                            "aspectRatio": "16x9",
-                                            "width": "640",   
-                                            "height": "360"                             
-                                        },
-                                        {
-                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
-                                            "aspectRatio": "4x3",
-                                            "width": "480",   
-                                            "height": "360"                             
-                                        },
-                                        {
-                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
-                                            "aspectRatio": "1x1",
-                                            "width": "360",   
-                                            "height": "360"                             
-                                        }                                
-                                    ]
-                                }
-                            ],
-                            "datePosted": "2012-08-01T04:00:00.000+0000",
-                            "seriesUrlKey": "hs-icarly",
-                            "seriesTitle": "iCarly",            
-                            "people": [
-                                "miranda-cosgrove"
-                            ],
-                            "duration": "1:24",
-                            "videoType": "clip",
-                            "legacyId": "1073793"                            
-                        }                        
-                    ]
-                },
-                {
-                    "title": "Win8 Test Webtile Promo",
-                    "description": "Check out Teennick.com!",
-                    "shortDescription": "Check out Teennick.com!",
-                    "copy": "Check out Teennick.com!",
-                    "headerText": "Check out this Quiz!",
-                    "subHeaderText": "Promo 2 Subheader Text",                    
-                    "url": "http://www.teennick.com/quizzes/who-is-your-degrassi-girl-crush-quiz.html",                    
-                    "images": [
-                        {
-                            "assets": [
-                                {
-                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
-                                    "aspectRatio": "16x9",
-                                    "width": "640",   
-                                    "height": "360"                             
-                                }                                
-                            ]
-                        }
-                    ]
-                }                
-            ]
-        },
-        {
-            "urlKey" : "win8-live-tile-wide-zone",
-            "title": "Win8 Wide Live Tiles",
-            "promos" : [
-                {
-                    "title" : "Promo 1 Title",
-                    "description" : "Promo 1 Description",
-                    "shortDescription": "Promo 1 Short Description",
-                    "copy": "Promo 1 Copy",
-                    "headerText": "Promo 1 Header Text",
-                    "subHeaderText": "Promo 1 Subheader Text"                    
-                    "images": [
-                        {
-                            "assets": [
-                                {
-                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
-                                    "aspectRatio": "16x9",
-                                    "width": "640",   
-                                    "height": "360"                             
-                                }                                
-                            ]
-                        }
-                    ],
-                    "items" : [
-                        {
-                            "id": "dcc6922e-cc35-492a-9263-407cc7ffab55",
-                            "urlKey": "icarly-409-itoe-fat-cakes-bath-disaster-clip",
-                            "type": "video",
-                            "title": "iCarly: \"iToe Fat Cakes: Bath Disaster!\"",
-                            "shortTitle": "iToe Fat Cakes: Bath Disaster!",
-                            "description": "Carly sets the record for worst date in history when she gets her toe stuck in the bath faucet!",
-                            "images": [
-                                {
-                                    "type": "thumbnail",
-                                    "assets": [
-                                        {
-                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
-                                            "aspectRatio": "16x9",
-                                            "width": "640",   
-                                            "height": "360"                             
-                                        },
-                                        {
-                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=480&height=360",
-                                            "aspectRatio": "4x3",
-                                            "width": "480",   
-                                            "height": "360"                             
-                                        },
-                                        {
-                                            "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg?crop=true&width=360&height=360",
-                                            "aspectRatio": "1x1",
-                                            "width": "360",   
-                                            "height": "360"                             
-                                        }                                
-                                    ]
-                                }
-                            ],
-                            "datePosted": "2012-08-01T04:00:00.000+0000",
-                            "seriesUrlKey": "hs-icarly",
-                            "seriesTitle": "iCarly",            
-                            "people": [
-                                "miranda-cosgrove"
-                            ],
-                            "duration": "1:24",
-                            "videoType": "clip",
-                            "legacyId": "1073793",                            
-                        }                        
-                    ]
-                },
-                {
-                    "title": "Win8 Test Webtile Promo",
-                    "description": "Check out Teennick.com!",
-                    "shortDescription": "Check out Teennick.com!",
-                    "copy": "Check out Teennick.com!",
-                    "headerText": "Check out this Quiz!",
-                    "subHeaderText": "Promo 2 Subheader Text",                    
-                    "url": "http://www.teennick.com/quizzes/who-is-your-degrassi-girl-crush-quiz.html",                    
-                    "images": [
-                        {
-                            "assets": [
-                                {
-                                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
-                                    "aspectRatio": "16x9",
-                                    "width": "640",   
-                                    "height": "360"                             
-                                }                                
-                            ]
-                        }
-                    ]
-                }                
-            ]
-        }
-    ]
-}
 
 --
 Content Delta (WIP)
