@@ -2733,6 +2733,92 @@ GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice
 
 
 --
+Animation Collection: Do Not Touch
+  list of Do Not Touch animation collections
+
+##Response
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query
+
+    -   **id** - unique identifier for this item
+    -   **urlKey** - unique within content type, used to request detailed info for this item
+    -   **type** - content type for this item (e.g. video)
+    -   **title** - title of this item
+    -   **shortTitle** - short title of this item
+    -   **gspLocation** - path to this animation sequence
+--
+
+GET http://arc.nick-q.mtvi.com/api/do-not-touch-animation-collection
+< 200
+{
+    "meta": {
+        "start": 0,
+        "count": 6,
+        "totalCount": 6,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "4faab79c-0f4d-42d9-b40d-64c8b19a18ad",
+            "urlKey": "4faab79c-0f4d-42d9-b40d-64c8b19a18ad",
+            "type": "do-not-touch-animation",
+            "title": "Do Not Touch : Straw Monster animation",
+            "shortTitle": "Do Not Touch : Straw Monster animation",
+            "images": [],
+            "gspLocation": "/nick-assets/app/iOS/DNT/StrawMonster_Myers"
+        },
+        {
+            "id": "fbe36fc1-1dc7-4861-be51-60d7fd1d9ec0",
+            "urlKey": "fbe36fc1-1dc7-4861-be51-60d7fd1d9ec0",
+            "type": "do-not-touch-animation",
+            "title": "Do Not Touch : Dart animation",
+            "images": [],
+            "gspLocation": "/nick-assets/app/iOS/DNT/Darts_Myers"
+        },
+        {
+            "id": "7297ab3c-c18e-41d3-9df9-e48551224d1b",
+            "urlKey": "7297ab3c-c18e-41d3-9df9-e48551224d1b",
+            "type": "do-not-touch-animation",
+            "title": "Do Not Touch : Fart animation",
+            "images": [],
+            "gspLocation": "/nick-assets/app/iOS/DNT/Fart"
+        },
+        {
+            "id": "a291802a-7d3c-4315-8281-39b395dce4af",
+            "urlKey": "a291802a-7d3c-4315-8281-39b395dce4af",
+            "type": "do-not-touch-animation",
+            "title": "Do Not Touch : Banana Allison animation",
+            "shortTitle": "Do Not Touch : Banana Allison animation",
+            "images": [],
+            "gspLocation": "/nick-assets/app/iOS/DNT/Banana_Allison"
+        },
+        {
+            "id": "4f4a9b1b-9a7e-499f-9b24-b36f82cf0072",
+            "urlKey": "4f4a9b1b-9a7e-499f-9b24-b36f82cf0072",
+            "type": "do-not-touch-animation",
+            "title": "Do Not Touch : SB Splat animation",
+            "shortTitle": "Do Not Touch : SB Splat animation",
+            "images": [],
+            "gspLocation": "/nick-assets/app/iOS/DNT/SBSplat_Myers"
+        },
+        {
+            "id": "ebf6eb9b-b6ec-4c14-a3b0-d83f59febaf8",
+            "urlKey": "ebf6eb9b-b6ec-4c14-a3b0-d83f59febaf8",
+            "type": "do-not-touch-animation",
+            "title": "Do Not Touch : Bug Squish animation",
+            "images": [],
+            "gspLocation": "/nick-assets/app/iOS/DNT/BugSquish"
+        }
+    ]
+}   
+
+
+--
 New Episodes
   list of new episodes (Original Air Date <= 7 days)
 
