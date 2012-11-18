@@ -2819,6 +2819,253 @@ GET /do-not-touch-animation-collection
 
 
 --
+Animation
+    *NOTE: sample url below is incorrect, this API call lives at http://www.nick.com/{gspLocation}/animate.json
+    Configuration information for an animation
+
+##Response
+- **baseHeight** - height of the original images before cropping
+- **baseWidth** - width of the original images before cropping
+- **baseX** - x coordinate of the origin of the original images
+- **baseY** - y coordinate of the origin of the original images
+- **totalFrames** - total number of frames in this animation sequence
+- **fps** - number of frames per second for this animation
+- **fpsOriginal** - original number of frames per second for this animation
+- **imageCount** - number of unique images that comprise this animation
+- **seqCount** - number of items in the sequence array
+- **sequence** - array of sequence items, used to map frames of animation to unique images
+    - **map** - unique id of file to display
+    - **count** - number of frames this file should be displayed
+- **files** - array of unique images in this animation
+    - **map** - unique id of this file
+    - **file** - filename of this image (path is same {gspLocation} but should be loaded via nick.mtvnimages.com)
+    - **height** - height of this image 
+    - **width** - width of this image   
+    - **x** - x coordinate of the origin of this image
+    - **y** - y coordinate of the origin of this image
+    - **size** - size of this file in kilobytes
+- **soundFile** - filename of this soundFile (path is the same {gspLocation}, loaded via www.nick.com)
+- **soundDuration** - duration of this sound in seconds
+
+
+--
+GET /nick-assets/app/iOS/DNT/fart-cropped/animate.json
+< 200
+< Content-Type: application/json
+{
+    "baseWidth": 2048,
+    "baseY": 0,
+    "sequence": [
+        {
+            "map": 0,
+            "count": 2
+        },
+        {
+            "map": 2,
+            "count": 2
+        },
+        {
+            "map": 4,
+            "count": 2
+        },
+        {
+            "map": 6,
+            "count": 2
+        },
+        {
+            "map": 8,
+            "count": 2
+        },
+        {
+            "map": 10,
+            "count": 2
+        },
+        {
+            "map": 12,
+            "count": 2
+        },
+        {
+            "map": 14,
+            "count": 2
+        },
+        {
+            "map": 16,
+            "count": 2
+        },
+        {
+            "map": 18,
+            "count": 2
+        },
+        {
+            "map": 20,
+            "count": 2
+        },
+        {
+            "map": 22,
+            "count": 2
+        },
+        {
+            "map": 24,
+            "count": 2
+        },
+        {
+            "map": 26,
+            "count": 2
+        },
+        {
+            "map": 28,
+            "count": 2
+        }
+    ],
+    "baseX": 0,
+    "fpsOriginal": 12,
+    "soundDuration": null,
+    "imageCount": 15,
+    "fps": 12,
+    "totalFrames": 30,
+    "files": [
+        {
+            "y": 1378,
+            "size": 0,
+            "width": 188,
+            "map": 0,
+            "height": 158,
+            "file": "fart0001.png",
+            "x": 0
+        },
+        {
+            "y": 1015,
+            "size": 13402,
+            "width": 649,
+            "map": 2,
+            "height": 521,
+            "file": "fart0003.png",
+            "x": 0
+        },
+        {
+            "y": 722,
+            "size": 27659,
+            "width": 1108,
+            "map": 4,
+            "height": 814,
+            "file": "fart0005.png",
+            "x": 22
+        },
+        {
+            "y": 639,
+            "size": 32273,
+            "width": 1384,
+            "map": 6,
+            "height": 878,
+            "file": "fart0007.png",
+            "x": 44
+        },
+        {
+            "y": 494,
+            "size": 36283,
+            "width": 1409,
+            "map": 8,
+            "height": 854,
+            "file": "fart0009.png",
+            "x": 233
+        },
+        {
+            "y": 277,
+            "size": 48267,
+            "width": 1315,
+            "map": 10,
+            "height": 1005,
+            "file": "fart0011.png",
+            "x": 322
+        },
+        {
+            "y": 74,
+            "size": 46954,
+            "width": 1316,
+            "map": 12,
+            "height": 1085,
+            "file": "fart0013.png",
+            "x": 308
+        },
+        {
+            "y": 0,
+            "size": 44259,
+            "width": 1342,
+            "map": 14,
+            "height": 1021,
+            "file": "fart0015.png",
+            "x": 311
+        },
+        {
+            "y": 523,
+            "size": 37021,
+            "width": 1249,
+            "map": 16,
+            "height": 461,
+            "file": "fart0017.png",
+            "x": 404
+        },
+        {
+            "y": 492,
+            "size": 38288,
+            "width": 1275,
+            "map": 18,
+            "height": 465,
+            "file": "fart0019.png",
+            "x": 383
+        },
+        {
+            "y": 498,
+            "size": 37483,
+            "width": 1277,
+            "map": 20,
+            "height": 466,
+            "file": "fart0021.png",
+            "x": 384
+        },
+        {
+            "y": 459,
+            "size": 38629,
+            "width": 1275,
+            "map": 22,
+            "height": 491,
+            "file": "fart0023.png",
+            "x": 402
+        },
+        {
+            "y": 269,
+            "size": 39631,
+            "width": 1281,
+            "map": 24,
+            "height": 542,
+            "file": "fart0025.png",
+            "x": 394
+        },
+        {
+            "y": 42,
+            "size": 44701,
+            "width": 1387,
+            "map": 26,
+            "height": 535,
+            "file": "fart0027.png",
+            "x": 302
+        },
+        {
+            "y": 0,
+            "size": 13549,
+            "width": 1457,
+            "map": 28,
+            "height": 281,
+            "file": "fart0029.png",
+            "x": 284
+        }
+    ],
+    "seqCount": 15,
+    "soundFile": null,
+    "baseHeight": 1536
+}
+
+--
 New Episodes
   list of new episodes (Original Air Date <= 7 days)
 
