@@ -67,15 +67,15 @@ List of "categories" (people/series) that content is grouped by
 
 ##Query Parameters
 
--   **urlKey** - url key of star list
+-   **urlKey** - url key of category list
 
 ##Response
 
--   **id** - unique identifier for this star
--   **urlKey** - unique identifier for this star
--   **type** - (person|series) disambiguation between items that represent stars vs series
--   **title** - name of this star
--   **description** - description of this star
+-   **id** - unique identifier for this category
+-   **urlKey** - unique identifier for this category
+-   **type** - (person|series) type for this category
+-   **title** - name of this category
+-   **description** - description of this category
 -   **images** - list of images for this item
     -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
     -   **assets** - list of assets for this image in varying aspect ratios
@@ -85,12 +85,12 @@ List of "categories" (people/series) that content is grouped by
         -   **height** - height of this image in pixels
 -   **seriesUrlKey** - url key for the series this item is related to
 -   **seriesTitle** - title of the series this item is related to
--   **supportingCast** - list of supporting cast members for this star
+-   **supportingCast** - list of supporting cast members for this category
     -   **id** - unique identifier for this supporting cast member
     -   **urlKey** - unique identifier for this supporting cast member
     -   **type** - (person|series) disambiguation between items that represent stars vs series
     -   **title** - name of this supporting cast member
-    -   **description** - description of this supporting cast membe
+    -   **description** - description of this supporting cast member
     -   **images** - list of images for this item
         -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
         -   **assets** - list of assets for this image in varying aspect ratios
@@ -100,7 +100,8 @@ List of "categories" (people/series) that content is grouped by
             -   **height** - height of this image in pixels
     -   **seriesUrlKey** - url key for the series this item is related to
     -   **seriesTitle** - title of the series this item is related to
--   **theme**
+-   **twitterHandle** - Twitter handle for this category
+-   **theme** - **NOTE:** platform specific, properties may vary
     -   **accent-color-1** - accent color for this star
     -   **theme-background** - background image for this star
         -   **assets** - list of assets for this image in varying aspect ratios
@@ -123,17 +124,35 @@ GET /categories?urlKey=ios-star-feed
         "title": "Miranda Cosgrove",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-miranda.png",
+                        "path": "/nick/app/iOS/stars/grid/miranda-cosgrove/star-miranda-tall.png",
                         "width": "736",
                         "height": "1504"
+                    },
+                    {
+                        "path": "/nick/app/iOS/stars/grid/miranda-cosgrove/star-miranda-short.png",
+                        "aspectRatio": "1x1",
+                        "width": "696",
+                        "height": "696"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/miranda-cosgrove/star-miranda-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
                     }
                 ]
             }
         ],
         "description": "iCarly",
-        "seriesUrlKey": "hs-icarly",
+        "seriesUrlKey": "hs_icarly",
         "seriesTitle": "iCarly",
         "supportingCast": [
             {
@@ -151,11 +170,23 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/jennette-mccurdy/star-jennette-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "iCarly",
-                "seriesUrlKey": "hs-icarly",
-                "seriesTitle": "iCarly"
+                "seriesUrlKey": "hs_icarly",
+                "seriesTitle": "iCarly",
+                "twitterHandle": "JennetteMcCurdy"
             },
             {
                 "id": "f1d5a7f4-57b6-11e1-9c48-0026b9414f30",
@@ -172,31 +203,92 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/jerry-trainor/star-jerry-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "iCarly",
-                "seriesUrlKey": "hs-icarly",
-                "seriesTitle": "iCarly"
+                "seriesUrlKey": "hs_icarly",
+                "seriesTitle": "iCarly",
+                "twitterHandle": "Jerrytrainor"
             },
             {
                 "id": "f1d5cf9a-57b6-11e1-9c48-0026b9414f30",
                 "urlKey": "noah-munck",
                 "type": "Person",
                 "title": "Noah Munck",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-noah-munck-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-noah-munck-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
+                    }
+                ],
                 "description": "iCarly",
-                "seriesUrlKey": "hs-icarly",
-                "seriesTitle": "iCarly"
+                "seriesUrlKey": "hs_icarly",
+                "seriesTitle": "iCarly",
+                "twitterHandle": "NoahMunck"
             },
             {
                 "id": "f1d5a4ca-57b6-11e1-9c48-0026b9414f30",
                 "urlKey": "nathan-kress",
                 "type": "Person",
                 "title": "Nathan Kress",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-nathan-kress-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-natha-kress-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
+                    }
+                ],
                 "description": "iCarly",
-                "seriesUrlKey": "hs-icarly",
-                "seriesTitle": "iCarly"
+                "seriesUrlKey": "hs_icarly",
+                "seriesTitle": "iCarly",
+                "twitterHandle": "NathanKress"
             }
-        ]
+        ],
+        "twitterHandle": "MirandaCosgrove"
     },
     {
         "id": "cba6b7aa-7a92-11e0-8fe5-0026b9414f30",
@@ -205,11 +297,13 @@ GET /categories?urlKey=ios-star-feed
         "title": "SpongeBob",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-spongeBob.png",
-                        "width": "1000",
-                        "height": "1504"
+                        "path": "/nick/app/iOS/stars/grid/spongebob-squarepants/star-spongebob-square.png",
+                        "aspectRatio": "1x1",
+                        "width": "736",
+                        "height": "736"
                     }
                 ]
             }
@@ -224,17 +318,30 @@ GET /categories?urlKey=ios-star-feed
         "title": "Victoria Justice",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-victoria.png",
-                        "width": "736",
-                        "height": "1504"
+                        "path": "/nick/app/iOS/stars/grid/victoria-justice/star-victoria-short.png",
+                        "aspectRatio": "1x1",
+                        "width": "696",
+                        "height": "696"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/victoria-justice/star-vitoria-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
                     }
                 ]
             }
         ],
         "description": "Victorious",
-        "seriesUrlKey": "hs-victorious",
+        "seriesUrlKey": "hs_victorious",
         "seriesTitle": "Victorious",
         "supportingCast": [
             {
@@ -252,11 +359,23 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/ariana-grande/stars-ariana-tweets.jpg",
+                                "aspectRatio": "16x9",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "Victorious",
-                "seriesUrlKey": "hs-victorious",
-                "seriesTitle": "Victorious"
+                "seriesUrlKey": "hs_victorious",
+                "seriesTitle": "Victorious",
+                "twitterHandle": "ArianaGrande"
             },
             {
                 "id": "f1d5aaec-57b6-11e1-9c48-0026b9414f30",
@@ -273,11 +392,23 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/liz-gillies/stars-liz-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "Victorious",
-                "seriesUrlKey": "hs-victorious",
-                "seriesTitle": "Victorious"
+                "seriesUrlKey": "hs_victorious",
+                "seriesTitle": "Victorious",
+                "twitterHandle": "LizGillies"
             },
             {
                 "id": "f1d5c6d0-57b6-11e1-9c48-0026b9414f30",
@@ -294,11 +425,23 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/avan-jogia/stars-avan-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "Victorious",
-                "seriesUrlKey": "hs-victorious",
-                "seriesTitle": "Victorious"
+                "seriesUrlKey": "hs_victorious",
+                "seriesTitle": "Victorious",
+                "twitterHandle": "ATJogia"
             },
             {
                 "id": "f1d5c9aa-57b6-11e1-9c48-0026b9414f30",
@@ -315,20 +458,56 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/daniella-monet/stars-daniella-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "Victorious",
-                "seriesUrlKey": "hs-victorious",
-                "seriesTitle": "Victorious"
+                "seriesUrlKey": "hs_victorious",
+                "seriesTitle": "Victorious",
+                "twitterHandle": "DaniellaMonet"
             },
             {
                 "id": "f1d5b154-57b6-11e1-9c48-0026b9414f30",
                 "urlKey": "matt-bennett",
                 "type": "Person",
                 "title": "Matt Bennett",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/matt-bennett/stars-matt-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/matt-bennett/stars-matt-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
+                    }
+                ],
                 "description": "Victorious",
-                "seriesUrlKey": "hs-victorious",
-                "seriesTitle": "Victorious"
+                "seriesUrlKey": "hs_victorious",
+                "seriesTitle": "Victorious",
+                "twitterHandle": "MattBennett"
             },
             {
                 "id": "f1d5adc6-57b6-11e1-9c48-0026b9414f30",
@@ -345,13 +524,26 @@ GET /categories?urlKey=ios-star-feed
                                 "height": "1504"
                             }
                         ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/grid/leon-thomas/stars-leon-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
                     }
                 ],
                 "description": "Victorious",
-                "seriesUrlKey": "hs-victorious",
-                "seriesTitle": "Victorious"
+                "seriesUrlKey": "hs_victorious",
+                "seriesTitle": "Victorious",
+                "twitterHandle": "LeonThomas3"
             }
-        ]
+        ],
+        "twitterHandle": "VictoriaJustice"
     },
     {
         "id": "c7740134-1ad7-11e1-aca6-0026b9414f30",
@@ -360,11 +552,23 @@ GET /categories?urlKey=ios-star-feed
         "title": "Leonardo",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-leonardo.png",
-                        "width": "862",
+                        "path": "/nick/app/iOS/stars/grid/teenage-mutant-ninja-turtles/star-leo-tall.png",
+                        "width": "736",
                         "height": "1504"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/teenage-mutant-ninja-turtles/star-leo-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
                     }
                 ]
             }
@@ -387,11 +591,23 @@ GET /categories?urlKey=ios-star-feed
                         "height": "1504"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/kendall-schimdt/star-kendall-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
         "description": "From Big Time Rush",
-        "seriesUrlKey": "hs-bigtimerush",
-        "seriesTitle": "Big Time Rush"
+        "seriesUrlKey": "hs_bigtimerush",
+        "seriesTitle": "Big Time Rush",
+        "twitterHandle": "HeffronDrive"
     },
     {
         "id": "f1d57a4a-57b6-11e1-9c48-0026b9414f30",
@@ -408,11 +624,23 @@ GET /categories?urlKey=ios-star-feed
                         "height": "1504"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/james-maslow/star-james-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
         "description": "From Big Time Rush",
-        "seriesUrlKey": "hs-bigtimerush",
-        "seriesTitle": "Big Time Rush"
+        "seriesUrlKey": "hs_bigtimerush",
+        "seriesTitle": "Big Time Rush",
+        "twitterHandle": "JamesMaslow"
     },
     {
         "id": "f1d5804e-57b6-11e1-9c48-0026b9414f30",
@@ -429,11 +657,23 @@ GET /categories?urlKey=ios-star-feed
                         "height": "1504"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/logan-henderson/star-logan-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
         "description": "From Big Time Rush",
-        "seriesUrlKey": "hs-bigtimerush",
-        "seriesTitle": "Big Time Rush"
+        "seriesUrlKey": "hs_bigtimerush",
+        "seriesTitle": "Big Time Rush",
+        "twitterHandle": "1LoganHenderson"
     },
     {
         "id": "f1d57784-57b6-11e1-9c48-0026b9414f30",
@@ -450,19 +690,54 @@ GET /categories?urlKey=ios-star-feed
                         "height": "1504"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/carlos-pena/star-carlos-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
         "description": "From Big Time Rush",
-        "seriesUrlKey": "hs-bigtimerush",
-        "seriesTitle": "Big Time Rush"
+        "seriesUrlKey": "hs_bigtimerush",
+        "seriesTitle": "Big Time Rush",
+        "twitterHandle": "TheCarlosPena"
     },
     {
         "id": "f1d6ad98-57b6-11e1-9c48-0026b9414f30",
         "urlKey": "ryan-potter",
         "type": "Person",
         "title": "Ryan Potter",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/star-ryan-potter-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/star-ryan-potter-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
+            }
+        ],
         "description": "Supah Ninjas",
-        "seriesUrlKey": "hs-supah-ninjas",
+        "seriesUrlKey": "hs_supah_ninjas",
         "seriesTitle": "Supah Ninjas",
         "supportingCast": [
             {
@@ -470,20 +745,69 @@ GET /categories?urlKey=ios-star-feed
                 "urlKey": "gracie-dzienny",
                 "type": "Person",
                 "title": "Gracie Dzienny",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-gracie-dzienny-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-gracie-dzienny-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
+                    }
+                ],
                 "description": "Supah Ninjas",
-                "seriesUrlKey": "hs-supah-ninjas",
-                "seriesTitle": "Supah Ninjas"
+                "seriesUrlKey": "hs_supah_ninjas",
+                "seriesTitle": "Supah Ninjas",
+                "twitterHandle": "gdzienny"
             },
             {
                 "id": "f1d6b05e-57b6-11e1-9c48-0026b9414f30",
                 "urlKey": "carlos-knight",
                 "type": "Person",
                 "title": "Carlos Knight",
+                "images": [
+                    {
+                        "type": "FullBody",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-carlos-knight-tall.png",
+                                "width": "736",
+                                "height": "1504"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Twitter",
+                        "assets": [
+                            {
+                                "path": "/nick/app/iOS/stars/star-carlos-knight-tweets.jpg",
+                                "aspectRatio": "1x1",
+                                "width": "312",
+                                "height": "312"
+                            }
+                        ]
+                    }
+                ],
                 "description": "Supah Ninjas",
-                "seriesUrlKey": "hs-supah-ninjas",
-                "seriesTitle": "Supah Ninjas"
+                "seriesUrlKey": "hs_supah_ninjas",
+                "seriesTitle": "Supah Ninjas",
+                "twitterHandle": "carloskknight"
             }
-        ]
+        ],
+        "twitterHandle": "RyankPotter"
     },
     {
         "id": "23e4ccea-cda9-11e0-aca6-0026b9414f30",
@@ -506,16 +830,29 @@ GET /categories?urlKey=ios-star-feed
     },
     {
         "id": "cb773e58-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-winx-club",
+        "urlKey": "hs_winx_club",
         "type": "series",
         "title": "Bloom",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-bloom.png",
-                        "width": "810",
-                        "height": "1504"
+                        "path": "/nick/app/iOS/stars/grid/winx-club/stars-winx-short.png",
+                        "aspectRatio": "1x1",
+                        "width": "736",
+                        "height": "736"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/winx-club/stars-winx-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
                     }
                 ]
             }
@@ -525,16 +862,28 @@ GET /categories?urlKey=ios-star-feed
     },
     {
         "id": "cb81db06-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-pr-samurai",
+        "urlKey": "hs_pr_samurai",
         "type": "series",
         "title": "The Red Ranger",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-red-ranger.png",
+                        "path": "/nick/app/iOS/stars/grid/power-rangers/stars-red-ranger-tall.png",
                         "width": "736",
                         "height": "1504"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/power-rangers/stars-red-ranger-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
                     }
                 ]
             }
@@ -557,28 +906,51 @@ GET /categories?urlKey=ios-star-feed
                         "height": "1504"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/lucas-cruikshank/stars-lucas-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
         "description": "Marvin Marvin"
     },
     {
         "id": "cb937a32-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-penguins",
+        "urlKey": "hs_penguins",
         "type": "series",
         "title": "Skipper",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-skipper.png",
+                        "path": "/nick/app/iOS/stars/grid/penguins-of-madagascar/stars-skipper-short.png",
                         "aspectRatio": "1x1",
                         "width": "736",
                         "height": "736"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/penguins-of-madagascar/stars-skipper-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
-        "description": "Kung Fu Panda: Legends of Awesomeness",
+        "description": "Penguins of Madagascar",
         "seriesTitle": "The Penguins of Madagascar"
     },
     {
@@ -588,11 +960,24 @@ GET /categories?urlKey=ios-star-feed
         "title": "Monster",
         "images": [
             {
+                "type": "FullBody",
                 "assets": [
                     {
-                        "path": "/nick/app/iOS/stars/carousel/star-monster.png",
+                        "path": "/nick/app/iOS/stars/grid/robot-and-monster/stars-monster-short.png",
+                        "aspectRatio": "1x1",
                         "width": "736",
-                        "height": "1504"
+                        "height": "736"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/robot-and-monster/stars-monster-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
                     }
                 ]
             }
@@ -602,9 +987,33 @@ GET /categories?urlKey=ios-star-feed
     },
     {
         "id": "cb93d842-7a92-11e0-8fe5-0026b9414f30",
-        "urlKey": "hs-fop",
+        "urlKey": "hs_fop",
         "type": "series",
         "title": "Timmy",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/timmy-turner/star-timmy-turner-short.png",
+                        "aspectRatio": "1x1",
+                        "width": "736",
+                        "height": "736"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/timmy-turner/star-timmy-turner-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
+            }
+        ],
         "description": "My Fairly OddParents",
         "seriesTitle": "The Fairly OddParents"
     },
@@ -623,6 +1032,17 @@ GET /categories?urlKey=ios-star-feed
                         "height": "1504"
                     }
                 ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/grid/legend-of-korra/star-korra-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
             }
         ],
         "description": "Legend of Korra",
@@ -633,8 +1053,31 @@ GET /categories?urlKey=ios-star-feed
         "urlKey": "burkely-duffield",
         "type": "Person",
         "title": "Burkely Duffield",
+        "images": [
+            {
+                "type": "FullBody",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/star-burkely-duffield-tall.png",
+                        "width": "736",
+                        "height": "1504"
+                    }
+                ]
+            },
+            {
+                "type": "Twitter",
+                "assets": [
+                    {
+                        "path": "/nick/app/iOS/stars/star-burkely-duffield-tweets.jpg",
+                        "aspectRatio": "1x1",
+                        "width": "312",
+                        "height": "312"
+                    }
+                ]
+            }
+        ],
         "description": "House of Anubis",
-        "seriesUrlKey": "hs-anubis-V2",
+        "seriesUrlKey": "hs_anubis_V2",
         "seriesTitle": "House of Anubis"
     }
 ]
