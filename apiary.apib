@@ -3765,6 +3765,329 @@ GET /new-episodes?series=hs-spongebob,ninja-turtles,robotmonster,legend-of-korra
 
 
 --
+Content Collection Delta
+
+The **types** parameter is always required. One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
+
+##Query Parameters  
+
+-   **types (required)** - (video|episode|playlist|blog|photoAlbum|game|external) comma delimited list of content types
+-   **people** - comma delimited list of person url keys  
+-   **series** - comma delimited list of series url keys
+-   **days (required)** - number of days since last data load - currently capped at 7
+-   **rows** - number of rows to return per page, default is 50, max is 200
+-   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
+  
+##Response
+
+- **meta** - information about the response
+
+    - **status** - indicates if request completed successfully 
+    - **count** - number of results in this response 
+    - **totalCount** - total number of results for this query
+  
+- **results** - results of this query - format same as content collection for added/updated records, deleted format documented here
+
+    - **id** - unique identifier for this item
+    - **type** - content type for this item (e.g. video)
+    - **status** - status of this record (deleted)
+--
+
+GET /content-collection-delta?types=episode,video,game,poll&days=1
+< 200
+< Content-Type: application/json
+{
+    "meta": {
+        "start": 0,
+        "count": 5,
+        "totalCount": 5,
+        "status": "SUCCESS"
+    },
+    "results": [
+        {
+            "id": "525dad4c-2f8c-462f-8314-1ebb69c3d10b",
+            "urlKey": "icarly-halloween-favorite-thing",
+            "type": "video",
+            "title": "iCarly Favorite Thing about Halloween",
+            "shortTitle": "iCarly Favorite Thing about Halloween",
+            "description": "The iCarly crew list off the things they enjoy about Haloween.",
+            "seriesUrlKey": "hs-icarly",
+            "seriesTitle": "iCarly",
+            "people": [
+                "miranda-cosgrove",
+                "nathan-kress",
+                "jennette-mccurdy"
+            ],
+            "duration": "0:53",
+            "datePosted": "2012-10-19T15:52:20.000+0000",
+            "videoType": "clip"
+        },
+        {
+            "id": "5fcab039-a0ef-449a-b5e3-c8c49ecaddf0",
+            "urlKey": "ygst-107-rockin-out",
+            "type": "video",
+            "title": "You Gotta See This!: \"Rockin' Out\"",
+            "shortTitle": "Rockin' Out",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        }
+                    ]
+                }
+            ],
+            "description": "Sometimes, the music just can't let you go!",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "0:37",
+            "datePosted": "2012-10-19T16:44:37.000+0000",
+            "videoType": "clip"
+        },
+        {
+            "id": "053aa2b1-16b0-49f1-b4bf-248c9a5bc686",
+            "urlKey": "ygst-111-fenced-in",
+            "type": "video",
+            "title": "You Gotta See This!: \"Basketball on Unicycles\"",
+            "shortTitle": "You Gotta See This!: \"Basketball on Unicycles\"",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/you-gotta-see-this/ygst-111-fenced-in-16x9.jpg",
+                            "width": "1024",
+                            "height": "576"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-111-fenced-in-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-111-fenced-in-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        }
+                    ]
+                }
+            ],
+            "description": "These guys push the boundaries of the game until they fall out!",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "0:46",
+            "datePosted": "2012-10-04T16:25:02.000+0000",
+            "videoType": "clip"
+        },
+        {
+            "id": "2afe0568-c18b-48f6-ac32-c0920c9c6e33",
+            "urlKey": "ygst-114-ele-fail",
+            "type": "video",
+            "title": "You Gotta See This!: \"Ele-Fail\"",
+            "shortTitle": "Ele-Fail",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/you-gotta-see-this/ygst-114-ele-fail-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-114-ele-fail-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/you-gotta-see-this/ygst-114-ele-fail-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        }
+                    ]
+                }
+            ],
+            "description": "It's not as easy as you'd think to climb an elephant.",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "0:54",
+            "videoType": "clip"
+        },
+        {
+            "id": "9216367c-6bb5-46fd-a833-6bc7d4b80e61",
+            "urlKey": "ygst-110-the-toss-up",
+            "type": "video",
+            "title": "You Gotta See This!: \"The Toss Up\"",
+            "shortTitle": "You Gotta See This!: \"The Toss Up\"",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        },
+                        {
+                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        },
+                        {
+                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "description": "For this kid, flippin' pizzas is easy as pie!",
+            "seriesUrlKey": "you-gotta-see-this",
+            "seriesTitle": "You Gotta See This",
+            "people": [
+                "chris-oneal",
+                "noah-crawford"
+            ],
+            "duration": "1:07",
+            "datePosted": "2012-09-18T14:13:05.000+0000",
+            "videoType": "clip"
+        }
+    ]
+}
+
+
+--
+Content Delta (WIP)
+
+##Query Parameters  
+
+-   **urlKeys (required)** - comma delimited list of urlKeys
+-   **type (required)** - (video|episode|playlist|blog|photoAlbum|game|external|article) content type to query
+
+##Response
+  
+- **id** - unique identifier for this item
+- **urlKey** - unique within content type, used to request detailed info for this item
+- **dateModified** - date that this item was last modified
+--
+
+GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-use&type=article
+< 200
+< Content-Type: application/json
+[
+    {
+        "id": "e1983c60-529f-4945-9a2a-59649cd86dc7",
+        "urlKey": "ios-app-faq",
+        "dateModified", "2012-08-31 02:04 PM"
+    },
+    {
+        "id": "6a1d7d14-cddc-445c-b2c8-415e6c6487cb",
+        "urlKey": "ios-app-privacy-policy",
+        "dateModified", "2012-08-30 05:13 PM"
+    },
+    {
+        "id": "fa0376f9-06c2-4392-aa2e-3ad47efedf37",
+        "urlKey": "ios-app-terms-of-use",
+        "dateModified", "2012-08-30 05:12 PM"
+    }
+]
+
+
+--
+Game Types
+
+--
+
+GET /gameTypes
+< 200
+< Content-Type: application/json
+[
+"Fitness",
+"Console",
+"Third-Person",
+"Turn-Based",
+"Extreme",
+"Trivia",
+"All",
+"Fighter",
+"Pinball",
+"Strategy",
+"3-D",
+"Stealth",
+"Puzzle",
+"Kids",
+"First-Person",
+"Sci-Fi",
+"Role Playing",
+"Action",
+"Card-Based",
+"Rhythm",
+"Movie-Based",
+"Party",
+"Skill",
+"RPG",
+"Side-Scroller",
+"Simulator",
+"Adult",
+"Graphic Novel",
+"Adventure",
+"Music",
+"Dance",
+"Arcade",
+"Flight",
+"Sports",
+"Racing",
+"Educational",
+"Platformer",
+"Episodic",
+"Shooter",
+"Survival Horror",
+"Real-Time",
+"2-D",
+"MMO",
+"Family",
+"3D",
+"Action",
+"Adventure",
+"Card",
+"ClubHouses",
+"ClubCinema"
+]
+
+
+--
 Stars (Deprecated)
   use Categories instead
 
@@ -4474,327 +4797,4 @@ GET /stars?urlKey=win8-star-feed
             "AccentColor1": "#ff8400"
         }
     }
-]
-
-
---
-Content Collection Delta
-
-The **types** parameter is always required. One of **people** or **series** is required. Currently, you cannot query by both **people** and **series** in the same request.
-
-##Query Parameters  
-
--   **types (required)** - (video|episode|playlist|blog|photoAlbum|game|external) comma delimited list of content types
--   **people** - comma delimited list of person url keys  
--   **series** - comma delimited list of series url keys
--   **days (required)** - number of days since last data load - currently capped at 7
--   **rows** - number of rows to return per page, default is 50, max is 200
--   **start** - integer specifying which record to return at the beginning of the list (e.g. 50 for second page of records)
-  
-##Response
-
-- **meta** - information about the response
-
-    - **status** - indicates if request completed successfully 
-    - **count** - number of results in this response 
-    - **totalCount** - total number of results for this query
-  
-- **results** - results of this query - format same as content collection for added/updated records, deleted format documented here
-
-    - **id** - unique identifier for this item
-    - **type** - content type for this item (e.g. video)
-    - **status** - status of this record (deleted)
---
-
-GET /content-collection-delta?types=episode,video,game,poll&days=1
-< 200
-< Content-Type: application/json
-{
-    "meta": {
-        "start": 0,
-        "count": 5,
-        "totalCount": 5,
-        "status": "SUCCESS"
-    },
-    "results": [
-        {
-            "id": "525dad4c-2f8c-462f-8314-1ebb69c3d10b",
-            "urlKey": "icarly-halloween-favorite-thing",
-            "type": "video",
-            "title": "iCarly Favorite Thing about Halloween",
-            "shortTitle": "iCarly Favorite Thing about Halloween",
-            "description": "The iCarly crew list off the things they enjoy about Haloween.",
-            "seriesUrlKey": "hs-icarly",
-            "seriesTitle": "iCarly",
-            "people": [
-                "miranda-cosgrove",
-                "nathan-kress",
-                "jennette-mccurdy"
-            ],
-            "duration": "0:53",
-            "datePosted": "2012-10-19T15:52:20.000+0000",
-            "videoType": "clip"
-        },
-        {
-            "id": "5fcab039-a0ef-449a-b5e3-c8c49ecaddf0",
-            "urlKey": "ygst-107-rockin-out",
-            "type": "video",
-            "title": "You Gotta See This!: \"Rockin' Out\"",
-            "shortTitle": "Rockin' Out",
-            "images": [
-                {
-                    "assets": [
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-4x3.jpg",
-                            "aspectRatio": "4x3",
-                            "width": "1024",
-                            "height": "768"
-                        },
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-1x1.jpg",
-                            "aspectRatio": "1x1",
-                            "width": "696",
-                            "height": "696"
-                        },
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-rocking-out-16x9.jpg",
-                            "aspectRatio": "16x9",
-                            "width": "1280",
-                            "height": "720"
-                        }
-                    ]
-                }
-            ],
-            "description": "Sometimes, the music just can't let you go!",
-            "seriesUrlKey": "you-gotta-see-this",
-            "seriesTitle": "You Gotta See This",
-            "people": [
-                "chris-oneal",
-                "noah-crawford"
-            ],
-            "duration": "0:37",
-            "datePosted": "2012-10-19T16:44:37.000+0000",
-            "videoType": "clip"
-        },
-        {
-            "id": "053aa2b1-16b0-49f1-b4bf-248c9a5bc686",
-            "urlKey": "ygst-111-fenced-in",
-            "type": "video",
-            "title": "You Gotta See This!: \"Basketball on Unicycles\"",
-            "shortTitle": "You Gotta See This!: \"Basketball on Unicycles\"",
-            "images": [
-                {
-                    "assets": [
-                        {
-                            "path": "/nick-assets/video/images/you-gotta-see-this/ygst-111-fenced-in-16x9.jpg",
-                            "width": "1024",
-                            "height": "576"
-                        },
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-111-fenced-in-4x3.jpg",
-                            "aspectRatio": "4x3",
-                            "width": "1024",
-                            "height": "768"
-                        },
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-111-fenced-in-1x1.jpg",
-                            "aspectRatio": "1x1",
-                            "width": "696",
-                            "height": "696"
-                        }
-                    ]
-                }
-            ],
-            "description": "These guys push the boundaries of the game until they fall out!",
-            "seriesUrlKey": "you-gotta-see-this",
-            "seriesTitle": "You Gotta See This",
-            "people": [
-                "chris-oneal",
-                "noah-crawford"
-            ],
-            "duration": "0:46",
-            "datePosted": "2012-10-04T16:25:02.000+0000",
-            "videoType": "clip"
-        },
-        {
-            "id": "2afe0568-c18b-48f6-ac32-c0920c9c6e33",
-            "urlKey": "ygst-114-ele-fail",
-            "type": "video",
-            "title": "You Gotta See This!: \"Ele-Fail\"",
-            "shortTitle": "Ele-Fail",
-            "images": [
-                {
-                    "assets": [
-                        {
-                            "path": "/nick-assets/video/images/you-gotta-see-this/ygst-114-ele-fail-16x9.jpg",
-                            "aspectRatio": "16x9",
-                            "width": "1280",
-                            "height": "720"
-                        },
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-114-ele-fail-4x3.jpg",
-                            "aspectRatio": "4x3",
-                            "width": "1024",
-                            "height": "768"
-                        },
-                        {
-                            "path": "/nick/video/images/you-gotta-see-this/ygst-114-ele-fail-1x1.jpg",
-                            "aspectRatio": "1x1",
-                            "width": "696",
-                            "height": "696"
-                        }
-                    ]
-                }
-            ],
-            "description": "It's not as easy as you'd think to climb an elephant.",
-            "seriesUrlKey": "you-gotta-see-this",
-            "seriesTitle": "You Gotta See This",
-            "people": [
-                "chris-oneal",
-                "noah-crawford"
-            ],
-            "duration": "0:54",
-            "videoType": "clip"
-        },
-        {
-            "id": "9216367c-6bb5-46fd-a833-6bc7d4b80e61",
-            "urlKey": "ygst-110-the-toss-up",
-            "type": "video",
-            "title": "You Gotta See This!: \"The Toss Up\"",
-            "shortTitle": "You Gotta See This!: \"The Toss Up\"",
-            "images": [
-                {
-                    "assets": [
-                        {
-                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-1x1.jpg",
-                            "aspectRatio": "1x1",
-                            "width": "696",
-                            "height": "696"
-                        },
-                        {
-                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-16x9.jpg",
-                            "aspectRatio": "16x9",
-                            "width": "1280",
-                            "height": "720"
-                        },
-                        {
-                            "path": "/nick/video/images/nick-stars/ygst-the-toss-up-4x3.jpg",
-                            "aspectRatio": "4x3",
-                            "width": "1024",
-                            "height": "768"
-                        }
-                    ]
-                }
-            ],
-            "description": "For this kid, flippin' pizzas is easy as pie!",
-            "seriesUrlKey": "you-gotta-see-this",
-            "seriesTitle": "You Gotta See This",
-            "people": [
-                "chris-oneal",
-                "noah-crawford"
-            ],
-            "duration": "1:07",
-            "datePosted": "2012-09-18T14:13:05.000+0000",
-            "videoType": "clip"
-        }
-    ]
-}
-
-
---
-Content Delta (WIP)
-
-##Query Parameters  
-
--   **urlKeys (required)** - comma delimited list of urlKeys
--   **type (required)** - (video|episode|playlist|blog|photoAlbum|game|external|article) content type to query
-
-##Response
-  
-- **id** - unique identifier for this item
-- **urlKey** - unique within content type, used to request detailed info for this item
-- **dateModified** - date that this item was last modified
---
-
-GET /content-delta?urlKeys=ios-app-faq,ios-app-privacy-policy,ios-app-terms-of-use&type=article
-< 200
-< Content-Type: application/json
-[
-    {
-        "id": "e1983c60-529f-4945-9a2a-59649cd86dc7",
-        "urlKey": "ios-app-faq",
-        "dateModified", "2012-08-31 02:04 PM"
-    },
-    {
-        "id": "6a1d7d14-cddc-445c-b2c8-415e6c6487cb",
-        "urlKey": "ios-app-privacy-policy",
-        "dateModified", "2012-08-30 05:13 PM"
-    },
-    {
-        "id": "fa0376f9-06c2-4392-aa2e-3ad47efedf37",
-        "urlKey": "ios-app-terms-of-use",
-        "dateModified", "2012-08-30 05:12 PM"
-    }
-]
-
-
---
-Game Types
-
---
-
-GET /gameTypes
-< 200
-< Content-Type: application/json
-[
-"Fitness",
-"Console",
-"Third-Person",
-"Turn-Based",
-"Extreme",
-"Trivia",
-"All",
-"Fighter",
-"Pinball",
-"Strategy",
-"3-D",
-"Stealth",
-"Puzzle",
-"Kids",
-"First-Person",
-"Sci-Fi",
-"Role Playing",
-"Action",
-"Card-Based",
-"Rhythm",
-"Movie-Based",
-"Party",
-"Skill",
-"RPG",
-"Side-Scroller",
-"Simulator",
-"Adult",
-"Graphic Novel",
-"Adventure",
-"Music",
-"Dance",
-"Arcade",
-"Flight",
-"Sports",
-"Racing",
-"Educational",
-"Platformer",
-"Episodic",
-"Shooter",
-"Survival Horror",
-"Real-Time",
-"2-D",
-"MMO",
-"Family",
-"3D",
-"Action",
-"Adventure",
-"Card",
-"ClubHouses",
-"ClubCinema"
 ]
