@@ -21,9 +21,19 @@ Global configuration for this application.
 List of key/value pairs specific to this application
 
 -   **baseImageUrl** - base url for any image assets
+-   **starsFeedUrlKey** - url key to use for categories feed
+-   **homePageUrlKey** - url key to use for editorial content collection (featured)
+-   **mysteryContentUrlKey** - url key to use for editorial content collection (mystery content)
+-   **seriesWithEpisodesUrlKey** - url key to use for category episodes hub feed
+-   **menuPromoUrlKey** - url key to use for menu promo
+-   **faqUrlKey** - url key to use for FAQ article
+-   **termsOfUseUrlKey** - url key to use for Terms of Use article
+-   **privacyPolicyUrlKey** - url key to use for Privacy Policy article
 -   **pollTallyUrlTemplate** - url template to retrieve poll results
 -   **pollSubmissionUrlTemplate** - url template to submit poll
--   **starsFeedUrlKey** - url key to use for stars feed
+-   **videoMGIDTemplate** - template for VMNPlayer video MGIDs
+-   **playlistMGIDTemplate** - template for VMNPlayer playlist MGIDs
+-   **episodeMGIDTemplate** - template for VMNPlayer episode MGIDs
 -   **gameUrlTemplate** - url template for flash games
 -   **mediaGenUrlTemplate** - url template for media gen feed
 
@@ -33,13 +43,21 @@ GET /configuration
 < 200
 < Content-Type: application/json
 {
-    "homePageUrlKey": "ios-ipad-home-grid",
+    "seriesWithEpisodesUrlKey": "ios-full-episode-hub",
+    "videoMGIDTemplate": "mgid:arc:video:nick.com:{videoId}",
+    "faqUrlKey": "ios-app-faq",
     "baseImageUrl": "http://nick.mtvnimages.com",
+    "termsOfUseUrlKey": "ios-app-terms-of-use",
     "pollTallyUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/tallies.json",
     "pollSubmissionUrlTemplate": "http://funnel.mtvnservices.com/api/v2/nick.com/collections/{collectionAlias}/entries.json",
+    "mysteryContentUrlKey": "ios-mystery-content",
+    "menuPromoUrlKey": "ios-menu-promo",
+    "gameUrlTemplate": "http://www.nick.com/games/{gameUrlKey}?apiKey={apiKey}",
+    "homePageUrlKey": "ios-ipad-home-grid",
+    "playlistMGIDTemplate": "mgid:arc:playlist:nick.com:{playlistId}",
+    "episodeMGIDTemplate": "mgid:arc:episode:nick.com:{playlistId}",
     "starsFeedUrlKey": "ios-star-feed",
-    "gameUrlTemplate": "http://www.nick.com/games/nickapp/{urlKey}.html",
-    "mediaGenUrlTemplate": "http://www.nick.com/dynamo/video/data/mediaGenProxy.jhtml?mgid=mgid:arc:video:nick.com:{videoId}"        
+    "privacyPolicyUrlKey": "ios-app-privacy-policy"
 }
 
 
