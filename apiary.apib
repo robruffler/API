@@ -3138,6 +3138,8 @@ Notification: Broadcast
     -   **type** - content type for this item (e.g. video)
     -   **title** - title of this item
     -   **shortTitle** - short title of this item
+    -   **subTitle** - optional subtitle of this item
+    -   **datePosted** - editorial date that this item was posted
 --
 GET /notification-broadcast
 < 200
@@ -3145,31 +3147,43 @@ GET /notification-broadcast
 {
     "meta": {
         "start": 0,
-        "count": 3,
-        "totalCount": 3,
+        "count": 4,
+        "totalCount": 4,
         "status": "SUCCESS"
     },
     "results": [
+        {
+            "id": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
+            "urlKey": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
+            "type": "broadcast-msg",
+            "title": "Did you know?",
+            "shortTitle": "Did you know?",
+            "subTitle": "Saving content from the grid",
+            "datePosted": "2012-11-18T05:00:00.000+0000"
+        },
         {
             "id": "16f758ea-351e-4e2f-8c7b-d6361665766b",
             "urlKey": "16f758ea-351e-4e2f-8c7b-d6361665766b",
             "type": "broadcast-msg",
             "title": "Tune in to the World Wide Day of Play tomorrow!!",
-            "shortTitle": "Tune in to the World Wide Day of Play tomorrow!!"
+            "shortTitle": "Tune in to the World Wide Day of Play tomorrow!!",
+            "datePosted": "2012-11-11T05:00:00.000+0000"
+        },
+        {
+            "id": "956e83ea-2e60-415d-a29f-64b369a11bdf",
+            "urlKey": "956e83ea-2e60-415d-a29f-64b369a11bdf",
+            "type": "broadcast-msg",
+            "title": "Test animation notification with a really long title",
+            "shortTitle": "Test animation notification with a really long title",
+            "datePosted": "2012-11-04T04:00:00.000+0000"
         },
         {
             "id": "95787335-d78f-4465-bebb-5d554adf7da7",
             "urlKey": "95787335-d78f-4465-bebb-5d554adf7da7",
             "type": "broadcast-msg",
             "title": "Kids pick the President",
-            "shortTitle": "Kids pick the President"
-        },
-        {
-            "id": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
-            "urlKey": "a6f44a4c-e378-4d2b-9242-7d9f780be9f5",
-            "type": "broadcast-msg",
-            "title": "Did you know?",
-            "shortTitle": "Did you know?"
+            "shortTitle": "Kids pick the President",
+            "datePosted": "2012-10-31T04:00:00.000+0000"
         }
     ]
 }
@@ -3199,19 +3213,45 @@ Notification: Talent Alert
     -   **type** - content type for this item (e.g. video)
     -   **title** - title of this item
     -   **shortTitle** - short title of this item
+    -   **subTitle** - optional subtitle of this item
+    -   **datePosted** - editorial date that this item was posted    
     -   **people** - list or url keys for the people associated to this item
 --
-GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice
+GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice,kendall-schmidt,james-maslow,logan-henderson,carlos-pena,ryan-potter,lucas-cruikshank,burkely-duffield,jennette-mccurdy,jerry-trainor,noah-munck,nathan-kress,ariana-grande,liz-gillies,avan-jogia,daniella-monet,matt-bennett,leon-thomas,gracie-dzienny,carlos-knight&series=hs-spongebob,ninja-turtles,kung-fu-panda-legends-of-awesomeness,hs_winx_club,hs_pr_samurai,hs_penguins,robotmonster,hs_fop,legend-of-korra
 < 200
 < Content-Type: application/json
 {
+{
     "meta": {
         "start": 0,
-        "count": 2,
-        "totalCount": 2,
+        "count": 6,
+        "totalCount": 6,
         "status": "SUCCESS"
     },
     "results": [
+        {
+            "id": "1f46cec7-f92a-4632-a2f3-109a31cf2959",
+            "urlKey": "1f46cec7-f92a-4632-a2f3-109a31cf2959",
+            "type": "talent-alert",
+            "title": "Snowboarding!!!!",
+            "shortTitle": "Snowboarding!!!!",
+            "subTitle": "Jennette snowboarding in Aspen",
+            "people": [
+                "jennette-mccurdy"
+            ],
+            "datePosted": "2012-11-18T05:00:00.000+0000"
+        },
+        {
+            "id": "16a4ec0f-a0fd-4bc3-9c81-59c56fe31b56",
+            "urlKey": "16a4ec0f-a0fd-4bc3-9c81-59c56fe31b56",
+            "type": "talent-alert",
+            "title": "Hey HEY HEY HAHA",
+            "shortTitle": "Hey HEY HEY  HAHA",
+            "people": [
+                "jerry-trainor"
+            ],
+            "datePosted": "2012-11-11T05:00:00.000+0000"
+        },
         {
             "id": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
             "urlKey": "2f0ce133-6d50-4282-bb07-eabeae1352cf",
@@ -3220,7 +3260,19 @@ GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice
             "shortTitle": "Flying through California",
             "people": [
                 "miranda-cosgrove"
-            ]
+            ],
+            "datePosted": "2012-11-08T05:00:00.000+0000"
+        },
+        {
+            "id": "b38e8ea0-091f-448d-b6db-e9c3def54c22",
+            "urlKey": "b38e8ea0-091f-448d-b6db-e9c3def54c22",
+            "type": "talent-alert",
+            "title": "This is a test from the Noah Munck broadcasting system",
+            "shortTitle": "This is a test from the Noah Munck broadcasting system",
+            "people": [
+                "noah-munck"
+            ],
+            "datePosted": "2012-11-06T05:00:00.000+0000"
         },
         {
             "id": "b01486a4-113b-4458-aea2-934c19734a3a",
@@ -3230,7 +3282,19 @@ GET /notification-talent-alert?people=miranda-cosgrove,victoria-justice
             "shortTitle": "Check out my new music video",
             "people": [
                 "victoria-justice"
-            ]
+            ],
+            "datePosted": "2012-11-03T04:00:00.000+0000"
+        },
+        {
+            "id": "98428082-a28c-403f-916c-34e3ab8368ec",
+            "urlKey": "98428082-a28c-403f-916c-34e3ab8368ec",
+            "type": "talent-alert",
+            "title": "Test audio notification",
+            "shortTitle": "Test audio notification",
+            "people": [
+                "nathan-kress"
+            ],
+            "datePosted": "2012-11-01T04:00:00.000+0000"
         }
     ]
 }
