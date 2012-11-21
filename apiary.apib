@@ -1090,15 +1090,16 @@ List of "categories" (series) that episode content is grouped by, will eventuall
 
 ##Query Parameters
 
--   **urlKey** - url key of star list
+-   **urlKey** - url key of category list
 
 ##Response
 
--   **id** - unique identifier for this star
--   **urlKey** - unique identifier for this star
--   **type** - (person|series) disambiguation between items that represent stars vs series
--   **title** - name of this star
--   **description** - description of this star
+-   **id** - unique identifier for this category
+-   **urlKey** - unique identifier for this category
+-   **type** - (person|series) type for this category
+-   **title** - title of this category
+-   **shortTitle** - short title for this category
+-   **description** - description of this category
 -   **images** - list of images for this item
     -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
     -   **assets** - list of assets for this image in varying aspect ratios
@@ -1108,7 +1109,7 @@ List of "categories" (series) that episode content is grouped by, will eventuall
         -   **height** - height of this image in pixels
 -   **seriesUrlKey** - url key for the series this item is related to
 -   **seriesTitle** - title of the series this item is related to
--   **theme**
+-   **theme** - **NOTE:** platform specific, properties may vary
     -   **accent-color-1** - accent color for this star
     -   **theme-background** - background image for this star
         -   **assets** - list of assets for this image in varying aspect ratios
@@ -1118,6 +1119,7 @@ List of "categories" (series) that episode content is grouped by, will eventuall
             -   **height** - height of this image in pixels
 -   **templateType** - flag to indicate type of episode listing screen (Content:Dynamic | Content:Editorial)
 -   **editorialUrlKey** - urlKey to pass into the Editorial Content Collection feed where needed
+-   **datePosted** - editorial original publish date for this category
 --
 
 
@@ -1172,6 +1174,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
             "BackgroundColor": "00b4e1",
             "BackgroundColor2": "97feb6"
         },
+        "editorialUrlKey": "ios-icarly-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1207,6 +1210,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
         "seriesUrlKey": "hs-spongebob",
         "seriesTitle": "SpongeBob SquarePants",
         "datePosted": "2009-06-09T18:08:53.000+0000",
+        "editorialUrlKey": "ios-spongebob-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1242,6 +1246,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
         "seriesUrlKey": "hs_victorious",
         "seriesTitle": "Victorious",
         "datePosted": "2009-12-08T15:48:51.000+0000",
+        "editorialUrlKey": "ios-victorious-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1291,6 +1296,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
             "BackgroundColor": "00b4e1",
             "BackgroundColor2": "97feb6"
         },
+        "editorialUrlKey": "ios-tmnt-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1340,6 +1346,35 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
             "BackgroundColor": "00b4e1",
             "BackgroundColor2": "97feb6"
         },
+        "editorialUrlKey": "ios-big-time-rush-full-episodes",
+        "templateType": "Content:Dynamic"
+    },
+    {
+        "id": "23e4ccea-cda9-11e0-aca6-0026b9414f30",
+        "urlKey": "kung-fu-panda-legends-of-awesomeness",
+        "type": "series",
+        "title": "Kung Fu Panda: Legends of Awesomeness",
+        "shortTitle": "Kung Fu Panda",
+        "images": [
+            {
+                "assets": [
+                    {
+                        "path": "/nicktoons-assets/shows/images/voltron-force/carousel/voltron-force.jpg",
+                        "width": "88",
+                        "height": "57"
+                    }
+                ]
+            }
+        ],
+        "description": "Po, the Dragon Warrior panda, leads the Furious Five in maintaining calm in the Valley Of Peace. With Tigress, Monkey, Mantis, Crane, Viper and Shifu fighting by his side, Po defends the Jade Palace against all intruders, \"skadooshing\" the bad guys with his trademark panda moves, and leaving plenty of time for dumplings.",
+        "seriesUrlKey": "kung-fu-panda-legends-of-awesomeness",
+        "seriesTitle": "Kung Fu Panda: Legends of Awesomeness",
+        "datePosted": "2011-08-23T16:26:29.000+0000",
+        "theme": {
+            "BackgroundColor": "00b4e1",
+            "BackgroundColor2": "97feb6"
+        },
+        "editorialUrlKey": "ios-kung-fu-panda-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1389,6 +1424,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
             "BackgroundColor": "00b4e1",
             "BackgroundColor2": "97feb6"
         },
+        "editorialUrlKey": "ios-winx-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1414,6 +1450,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
         "seriesUrlKey": "hs_pr_samurai",
         "seriesTitle": "Power Rangers: Super Samurai",
         "datePosted": "2010-11-04T17:11:17.000+0000",
+        "editorialUrlKey": "ios-power-rangers-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1439,6 +1476,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
         "seriesUrlKey": "robotmonster",
         "seriesTitle": "Robot & Monster",
         "datePosted": "2012-07-10T19:26:31.000+0000",
+        "editorialUrlKey": "ios-robot-monster-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1474,6 +1512,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
         "seriesUrlKey": "legend-of-korra",
         "seriesTitle": "Legend of Korra",
         "datePosted": "2012-01-27T21:06:11.000+0000",
+        "editorialUrlKey": "ios-korra-full-episodes",
         "templateType": "Content:Dynamic"
     },
     {
@@ -1509,6 +1548,7 @@ GET /category-episodes-hub?urlKey=ios-full-episode-hub
         "seriesUrlKey": "hs_anubis_V2",
         "seriesTitle": "House of Anubis",
         "datePosted": "2010-12-01T17:17:48.000+0000",
+        "editorialUrlKey": "ios-anubis-full-episodes",
         "templateType": "Content:Dynamic"
     }
 ]
