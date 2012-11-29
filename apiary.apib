@@ -1837,9 +1837,14 @@ The **types** parameter is always required. One of **people** or **series** is r
     -   **duration** - duration of this item (for video only)
     -   **url** - external url for this item (for external only)
     -   **photoCount** - number of photos in this album (for photoAlbum only)
+    -   **season** - season details
+        -   **id** - unique id for this season
+        -   **urlKey** - unique id for this season
+        -   **title** - title of this season
+        -   **seasonNumber** - season number for this season
 --
 
-GET /content-collection?types=video&series=hs-spongebob
+GET /content-collection?types=video,episode&series=hs-spongebob,hs_pr_samurai
 < 200
 < Content-Type: application/json
 {
@@ -1849,6 +1854,49 @@ GET /content-collection?types=video&series=hs-spongebob
         "totalCount": 3
     },
     "results": [
+        {
+            "id": "84f90351-b8c9-422d-99e6-3ec860774a5c",
+            "urlKey": "Power-rangers-super-samurai-218-full-episode-rev",
+            "type": "episode",
+            "title": "Power Rangers Super Samurai: \"Evil Reborn\"",
+            "shortTitle": "Evil Reborn",
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick-assets/video/images/power-rangers/power-rangers-super-samurai-218-full-episode-16x9.jpg",
+                            "aspectRatio": "16x9",
+                            "width": "1280",
+                            "height": "720"
+                        },
+                        {
+                            "path": "/nick/video/images/power-rangers/power-rangers-super-samurai-218-full-episode-4x3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        },
+                        {
+                            "path": "/nick/video/images/power-rangers/power-rangers-super-samurai-218-full-episode-1x1.jpg",
+                            "aspectRatio": "1x1",
+                            "width": "696",
+                            "height": "696"
+                        }
+                    ]
+                }
+            ],
+            "description": "The battle between Jayden and Deker finally reaches an epic conclusion.",
+            "seriesUrlKey": "hs_pr_samurai",
+            "seriesTitle": "Power Rangers: Super Samurai",
+            "datePosted": "2012-11-24T22:07:21.000+0000",
+            "season": {
+                "id": "1086dace-1aec-4973-bd93-e8c6bd2695b6",
+                "urlKey": "1086dace-1aec-4973-bd93-e8c6bd2695b6",
+                "title": "Power Rangers Super Samurai S2",
+                "seasonNumber": 2
+            },
+            "rating": "TV-Y7FV",
+            "episodeNumber": "218"
+        },    
         {
             "id": "ddec2d94-fb40-11e0-aca6-0026b9414f30",
             "urlKey": "spongebob-164-barnacle-face-the-zit-doesnt-quit-clip",
@@ -2298,6 +2346,11 @@ Episode
 -   **episodeNumber** - number of this episode in the series
 -   **expirationDate** - date that this content expires
 -   **playlistId** - playlist id for this episode
+-   **season** - season details
+    -   **id** - unique id for this season
+    -   **urlKey** - unique id for this season
+    -   **title** - title of this season
+    -   **seasonNumber** - season number for this season
 --
 
 GET /episode?id=bdaa2191-5b78-4dc3-8fca-86264c9b3942
@@ -2526,7 +2579,13 @@ GET /episode?id=bdaa2191-5b78-4dc3-8fca-86264c9b3942
     ],
     "rating": "TV-Y7",
     "episodeNumber": "118",
-    "playlistId": "e78c61a2-0940-11e2-8969-0026b9414f30"
+    "playlistId": "e78c61a2-0940-11e2-8969-0026b9414f30",
+    "season": {
+        "id": "1086dace-1aec-4973-bd93-e8c6bd2695b6",
+        "urlKey": "1086dace-1aec-4973-bd93-e8c6bd2695b6",
+        "title": "Power Rangers Super Samurai S2",
+        "seasonNumber": 2
+    }    
 }
 
 
