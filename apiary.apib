@@ -2879,7 +2879,12 @@ Article
 -   **articleBlocks** - contents of this article
     -   **title** - title of this article block
     -   **content** - content of this article block
-    -   **image** - image for this article block
+    -   **images** - image for this article block (will only ever contain 1 image)
+        -   **assets** - list of assets for this image in varying aspect ratios
+            -   **path** - path to this image
+            -   **aspectRatio** - aspect ratio of this image
+            -   **width** - width of this image in pixels
+            -   **height** - height of this image in pixels    
     -   **caption** - caption for this article block
     -   **videoId** - video id for this article block
     -   **audioId** - audio id for this article block
