@@ -3243,6 +3243,34 @@ GET /poll?urlKey=sample-ios-poll
 
 
 --
+Audio
+
+#Query Parameters
+
+-   **id** - id of the audio file to retrieve
+
+##Response
+
+-   **id** - unique id for this audio file
+-   **urlKey** - unique id for this audio file
+-   **type** - type of this item
+-   **title** - title of this audio file
+-   **datePosted** - editorial original publish date
+-   **path** - path to this audio file (base url TBD)
+--
+GET /audio
+< 200
+< Content-Type: application/json
+{
+    "id": "8f64ea36-d4ed-41a9-8086-9d301ba83c6b",
+    "urlKey": "8f64ea36-d4ed-41a9-8086-9d301ba83c6b",
+    "type": "audio",
+    "title": "Clock",
+    "datePosted": "2012-11-29T05:00:00.000+0000",
+    "path": "/nickelodeon/nick/audio/kca_comp/ClockCuckoo6020.mp3"
+}
+
+--
 Notification: Broadcast
 
 ##Query Parameters  
