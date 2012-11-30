@@ -2881,7 +2881,8 @@ Article
     -   **content** - content of this article block
     -   **image** - image for this article block
     -   **caption** - caption for this article block
-    -   **video** - video for this article block
+    -   **videoId** - video id for this article block
+    -   **audioId** - audio id for this article block
 -   **images** - list of images for this item
     -   **type** - string identifier to determine placement (e.g. thumbnail, featured)
     -   **assets** - list of assets for this image in varying aspect ratios
@@ -2895,39 +2896,99 @@ Article
 -   **people** - list or url keys for the people associated to this item
 --
 
-GET /article?urlKey=privacy-policy-faqs
+GET /article?urlKey=20-miranda-cosgrove-facts
 < 200
 < Content-Type: application/json
-{ 
-    "id": "10ccb01b-7da2-425f-b6f4-8df294364a33",
-    "urlKey": "privacy-policy-faqs",
-    "title": "Parents & Preschool Privacy Policy FAQs",
-    "description": "Answers to frequently asked questions about the Nickelodeon Parents & Preschool privacy policy.",
-    "articleBlocks": [
-        {
-            "content": "Your privacy is very important to Nickelodeon Parents & Preschool. We always want you to know what information we collect, how we use it, and the types of third parties with whom we may share personally identifiable information, so that you can make informed decisions about information that pertains to you. In addition, we are continuously looking for ways to improve your experience with us. As our sites and offerings continue to grow and evolve, we will update our policies to reflect our revised privacy practices. This FAQ highlights the most recent changes to our privacy policy."
-        },
-        {
-            "title": "QUESTION: What are the important updates?",
-            "content": "Answer: There are several important updates:",
-        }
-    ],
+{
+    "id": "0236e6be-7005-4555-a175-b659ced381db",
+    "urlKey": "20-miranda-cosgrove-facts",
+    "type": "blog",
+    "title": "20 Silly Facts About Miranda Cosgrove",
+    "shortTitle": "20 Silly Facts About Miranda",
     "images": [
         {
+            "type": "Thumbnail",
             "assets": [
                 {
-                    "path": "/nick-assets/video/images/spongebob-squarepants/spongebob-164-barnacle-face-the-zit-doesnt-quit-clip.jpg",
+                    "path": "/nick/shows/images/blogs/blogs-1/miranda-sillest-moments-thumbnail-1x1.jpg",
+                    "aspectRatio": "1x1",
+                    "width": "1024",
+                    "height": "1024"
+                },
+                {
+                    "path": "/nick/shows/images/blogs/blogs-1/miranda-sillest-moments-thumbnail-4x3.jpg",
+                    "aspectRatio": "4x3",
+                    "width": "1024",
+                    "height": "768"
+                },
+                {
+                    "path": "/nick/shows/images/blogs/blogs-1/miranda-sillest-moments-thumbnail-16x9.jpg",
                     "aspectRatio": "16x9",
-                    "width": "640",   
-                    "height": "360"                             
-                }                                
+                    "width": "1024",
+                    "height": "576"
+                }
             ]
         }
     ],
-    "datePosted": "",
-    "seriesUrlKey": "hs-spongebob",
-    "seriesTitle": "SpongeBob SquarePants",            
+    "seriesUrlKey": "star-411",
+    "seriesTitle": "Star 411 Hub",
     "people": [
+        "miranda-cosgrove"
+    ],
+    "datePosted": "2012-06-01T15:30:00.000+0000",
+    "articleBlocks": [
+        {
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/blogs/blogs-1/miranda-sillest-moments-4x3-blog-image-1.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ],
+            "content": "<p>Do you know-it-all about <i>iCarly</i> leading lady, Miranda Cosgrove? Well, did you know that she once held a birthday party for her pet cat? Su<i>purrrr</i>ised?! So were we! While reading up on the super celeb in the pages of <i>Hot Hollywood</i>, we found out tons of silly unknown facts about her. And yes, we're totally willing to share. Peep the list of fun factoids that Miranda spilled to the mag, below!</p>"
+        },
+        {
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/blogs/blogs-1/miranda-sillest-moments-3x4-blog-image-2.jpg",
+                            "aspectRatio": "3x4",
+                            "width": "768",
+                            "height": "1024"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "content": "<p>\n<b>1.</b> \"I've been known to make cupcakes in the middle of the night.\"<br/>\n<b>2.</b> \"I'll never let anyone kill a bug. I'll always rescue it and take it outside.\"<br/>\n<b>3.</b> \"My best birthday gift ever: a treehouse!\"<br/>\n<b>4.</b> \"I can't make it through a week without sushi.\"<br/>\n<b>5.</b> \"I'm an insane night owl.\"<br/>\n<b>6.</b> \"When I was little, I walked by a wasps' nest and ending up getting stung more than 60 times.\"<br/>\n<b>7.</b> \"<i>The Catcher in the Rye</i> is one of my favorite books.\"<br/>\n<b>8.</b> \"Once, while I was on tour, a 6-year-old girl sneaked into my hotel room.\"<br/>\n<b>9.</b> \"My favorite holiday is Halloween. I spend weeks preparing.\"<br/>\n<b>10.</b> \"I love swimming in the rain!\"<br/></p>"
+        },
+        {
+            "images": [
+                {
+                    "assets": [
+                        {
+                            "path": "/nick/shows/images/blogs/blogs-1/miranda-sillest-moments-4x3-blog-image-3.jpg",
+                            "aspectRatio": "4x3",
+                            "width": "1024",
+                            "height": "768"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "content": "<p>\n<b>11.</b> \"One of my favorite pastimes is going to the Santa Monica Pier and riding the roller coaster.\"<br/>\n<b>12.</b> \"I've met all of the living U.S. presidents.\"<br/>\n<b>13.</b> \"One of my biggest disappointments is that I never for to be a flower girl.\"<br/>\n<b>14.</b> \"I climbed the Sydney Harbour Bridge in Australia when I was 15.\"<br/>\n<b>15.</b> \"I have always thought my house was haunted.\"<br/>\n<b>16.</b> \"I enjoy painting and drawing.\"<br/>\n<b>17.</b> \"I love to read.\"<br/>\n<b>18.</b> \"I collect bicycles.\"<br/>\n<b>19.</b> \"Italy is my favorite country that I've visited. Mostly because of the food\"<br/>\n<p>Miranda saves bugs and loves to bake in the moonlight? Who knew?! With every new scoop we learn about this fab gal, we heart her just a little bit more. Don't you?</p>\n<b>20.</b> \"I once had a birthday party for my cat.\"<br/></p>"
+        },
+        {
+            "audioId": "8f64ea36-d4ed-41a9-8086-9d301ba83c6b"
+        }
     ]
 }
 
