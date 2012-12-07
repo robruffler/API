@@ -1843,6 +1843,8 @@ The **types** parameter is always required. One of **people** or **series** is r
         -   **urlKey** - unique id for this season
         -   **title** - title of this season
         -   **seasonNumber** - season number for this season
+    -   **authRequired ** - flag indicating if this item requires authentication (for episode only)
+    -   **availableUntil** - date this item will be available until (for episode only)
 --
 
 GET /content-collection?types=video,episode&series=hs-spongebob,hs_pr_samurai
@@ -2352,6 +2354,9 @@ Episode
     -   **urlKey** - unique id for this season
     -   **title** - title of this season
     -   **seasonNumber** - season number for this season
+-   **authRequired ** - flag indicating if this item requires authentication
+-   **availableUntil** - date this item will be available until 
+
 --
 
 GET /episode?id=bdaa2191-5b78-4dc3-8fca-86264c9b3942
